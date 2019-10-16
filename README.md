@@ -1,5 +1,13 @@
-# Sunbay
+# Projet capture - SunBay
 
-Projet capture
+Ce projet consiste en la réalisation des éléments suivants:
 
-test
+* Un service web nodejs
+* Un service web PHP
+* Une application mobile Cordova
+* Une application bureau Electron
+
+
+## Membres du projet
+
+* Loïc BERTRAND / github: loicbtd
