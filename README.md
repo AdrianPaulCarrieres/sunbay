@@ -12,3 +12,4 @@ Ce projet consiste en la réalisation des éléments suivants:
 
 * Loïc BERTRAND / github: loicbtd
 * Adrian-Paul CARRIÈRES / github: AdrianPaulCarrières
+* Estevan Gay / github : EstevanGAY
