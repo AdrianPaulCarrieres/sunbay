@@ -11,3 +11,4 @@ Ce projet consiste en la réalisation des éléments suivants:
 ## Membres du projet
 
 * Loïc BERTRAND / github: loicbtd
+* Adrian-Paul CARRIÈRES / github: AdrianPaulCarrières
