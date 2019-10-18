@@ -1,0 +1,9 @@
+<calcul>
+    <id>id du calcul</id>
+    <type-donnee-mesuree>savoir si c'est une moyenne ou un écart-type</type-donnee-mesuree>
+    <unite>pour savoir si c'est des degrés celsius (température) ou en lux (luminosité)</unite>
+    <valeur>la valeur du calcul</valeur>
+    <etiquette>nom du calcul</etiquette>
+    <date-debut>date du début de la plage sur laquelle la valeur a été calculée</date-debut>
+    <date-fin>date du fin de la plage sur laquelle la valeur a été calculée</date-fin>
+</calcul>
