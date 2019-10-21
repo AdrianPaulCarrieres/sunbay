@@ -1,5 +1,6 @@
 <?php
 
-class DonneeMesureeDAO implements DonneeMesureeSQL {
+class DonneeMesureeDAO implements DonneeMesureeSQL
+{
 
 }

@@ -1,5 +1,6 @@
 <?php
 
-class UniteDAO implements UniteSQL {
+class UniteDAO implements UniteSQL
+{
 
 }
