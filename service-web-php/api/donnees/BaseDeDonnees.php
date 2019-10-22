@@ -1,8 +1,6 @@
 <?php
 
-require_once('../../secure/env.developpement.php');
-
-class BaseDeDonnees implements BaseDeDonneesSQL
+class BaseDeDonnees
 {
     private static $instance;
 

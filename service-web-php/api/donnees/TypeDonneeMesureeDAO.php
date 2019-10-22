@@ -38,4 +38,13 @@ class TypeDonneeMesureeDAO implements TypeDonneeMesureeSQL
         }
         return $this->listeTypeDonneeMesuree;
     }
+
+    public function trouverTypeDonneeMesureeParId($idRecherche)
+    {
+        // TODO : améliorer la recherche par une requête à la base de données
+        $this->recupererListeTypeDonneeMesuree();
+        foreach ($this->listeTypeDonneeMesuree as $typeDonneeMesuree) {
+            if ($idRecherche == $typeDonneeMesuree->getIdTypeDonneeMesuree()) return $typeDonneeMesuree;
+        }
+    }
 }

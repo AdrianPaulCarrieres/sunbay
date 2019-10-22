@@ -35,10 +35,13 @@ class CalculDAO implements CalculSQL
             $dateDebut = $item[Calcul::CLE_DATE_DEBUT];
             $dateFin = $item[Calcul::CLE_DATE_FIN];
 
+            $typeDonneeMesuree = TypeDonneeMesureeDAO::getInstance()->trouverTypeDonneeMesureeParId($idTypeDonneeMesuree);
+            $unite = UniteDAO::getInstance()->trouverUniteParId($idUnite);
+
             $calcul = new Calcul(
               $idCalcul,
-                $idTypeDonneeMesuree,
-                $idUnite,
+                $typeDonneeMesuree,
+                $unite,
                 $valeur,
                 $etiquette,
                 $dateDebut,
@@ -47,5 +50,24 @@ class CalculDAO implements CalculSQL
             array_push($this->listeCalcul, $calcul);
         }
         return $this->listeCalcul;
+    }
+
+    public function exporter()
+    {
+        $this->recupererListeCalcul();
+
+        $xml = "";
+        foreach ($this->listeCalcul as $calcul) {
+            $xml .= "<calcul>" . "\n" .
+                "\t" . "<idCalcul>" . $calcul->getIdCalcul() . "</idCalcul>" . "\n" .
+                "\t" . "<typeDonneeMesuree>" . $calcul->getTypeDonneeMesuree()->getEtiquette() . "</typeDonneeMesuree>" . "\n" .
+                "\t" . "<unite>" . $calcul->getUnite()->getEtiquette() . "</unite>" . "\n" .
+                "\t" . "<valeur>" . $calcul->getValeur() . "</valeur>" . "\n" .
+                "\t" . "<etiquette>" . $calcul->getEtiquette() . "</etiquette>" . "\n" .
+                "\t" . "<dateDebut>" . $calcul->getDateDebut() . "</dateDebut>" . "\n" .
+                "\t" . "<dateFin>" . $calcul->getDateFin() . "</dateFin>" . "\n" .
+            "</calcul>" . "\n";
+        }
+        return $xml;
     }
 }

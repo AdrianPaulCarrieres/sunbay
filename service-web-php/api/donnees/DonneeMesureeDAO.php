@@ -32,7 +32,7 @@ class DonneeMesureeDAO implements DonneeMesureeSQL
             $instant = $item[DonneeMesuree::CLE_INSTANT];
             $idTypeDonneeMesuree = $item[DonneeMesuree::CLE_ID_TYPE_DONNEE_MESUREE];
 
-            $typeDonneeMesuree = TypeDonneeMesureeDAO::getInstance()->trouverDonneeMesureeParId($idTypeDonneeMesuree);
+            $typeDonneeMesuree = TypeDonneeMesureeDAO::getInstance()->trouverTypeDonneeMesureeParId($idTypeDonneeMesuree);
 
             $donneeMesuree = new DonneeMesuree(
                 $idDonneeMesuree,

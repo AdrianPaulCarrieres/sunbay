@@ -38,4 +38,13 @@ class UniteDAO implements UniteSQL
         }
         return $this->listeUnite;
     }
+
+    public function trouverUniteParId($idRecherche)
+    {
+        // TODO : améliorer la recherche par une requête à la base de données
+        $this->recupererListeUnite();
+        foreach ($this->listeUnite as $unite) {
+            if ($idRecherche == $unite->getIdUnite()) return $unite;
+        }
+    }
 }
