@@ -7,8 +7,6 @@ var Accueil = (function () {
             elementBody = document.getElementsByTagName("body")[0];
             elementBody.innerHTML = pageAccueil;
 
-            $('.dropdown-trigger').dropdown();
-            $('.dropdown-trigger').dropdown();
             var ctx = document.getElementById('chartTemp').getContext('2d');
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
