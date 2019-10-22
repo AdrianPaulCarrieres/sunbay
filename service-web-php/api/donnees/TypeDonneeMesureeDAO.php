@@ -29,10 +29,12 @@ class TypeDonneeMesureeDAO implements TypeDonneeMesureeSQL
         foreach ($curseur as $item) {
             $idTypeDonneeMesuree = $item[TypeDonneeMesuree::CLE_ID_TYPE_DONNEE_MESUREE];
             $etiquette = $item[TypeDonneeMesuree::CLE_ETIQUETTE];
+            $unite = $item[TypeDonneeMesuree::CLE_UNITE];
 
             $typeDonneeMesuree = new TypeDonneeMesuree(
                 $idTypeDonneeMesuree,
-                $etiquette
+                $etiquette,
+                $unite
             );
             array_push($this->listeTypeDonneeMesuree, $typeDonneeMesuree);
         }

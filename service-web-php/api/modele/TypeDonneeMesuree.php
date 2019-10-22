@@ -4,19 +4,23 @@ class TypeDonneeMesuree
 {
     const CLE_ID_TYPE_DONNEE_MESUREE = 'id_type_donnee_mesuree';
     const CLE_ETIQUETTE = 'etiquette';
+    const CLE_UNITE = 'unite';
 
     private $idTypeDonneeMesuree;
     private $etiquette;
+    private $unite;
 
     /**
      * TypeDonneeMesuree constructor.
      * @param $idTypeDonneeMesuree
      * @param $etiquette
+     * @param $unite
      */
-    public function __construct($idTypeDonneeMesuree, $etiquette)
+    public function __construct($idTypeDonneeMesuree, $etiquette, $unite)
     {
         $this->idTypeDonneeMesuree = $idTypeDonneeMesuree;
         $this->etiquette = $etiquette;
+        $this->unite = $unite;
     }
 
     /**
@@ -49,5 +53,21 @@ class TypeDonneeMesuree
     public function setEtiquette($etiquette)
     {
         $this->etiquette = $etiquette;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUnite()
+    {
+        return $this->unite;
+    }
+
+    /**
+     * @param mixed $unite
+     */
+    public function setUnite($unite)
+    {
+        $this->unite = $unite;
     }
 }
