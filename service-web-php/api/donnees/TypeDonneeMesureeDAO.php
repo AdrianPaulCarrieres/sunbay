@@ -10,7 +10,7 @@ class TypeDonneeMesureeDAO implements TypeDonneeMesureeSQL
     public static function getInstance()
     {
         if(is_null(self::$instance)) {
-            self::$instance = new BaseDeDonnees();
+            self::$instance = new TypeDonneeMesureeDAO();
         }
         return self::$instance;
     }

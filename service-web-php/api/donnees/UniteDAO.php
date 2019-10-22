@@ -10,7 +10,7 @@ class UniteDAO implements UniteSQL
     public static function getInstance()
     {
         if(is_null(self::$instance)) {
-            self::$instance = new BaseDeDonnees();
+            self::$instance = new UniteDAO();
         }
         return self::$instance;
     }

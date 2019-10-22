@@ -11,8 +11,8 @@ class Calcul
     const CLE_DATE_FIN = 'date_fin';
 
     private $idCalcul;
-    private $idTypeDonneeMesuree;
-    private $idUnite;
+    private $typeDonneeMesuree;
+    private $unite;
     private $valeur;
     private $etiquette;
     private $dateDebut;
@@ -21,18 +21,18 @@ class Calcul
     /**
      * Calcul constructor.
      * @param $idCalcul
-     * @param $idTypeDonneeMesuree
-     * @param $idUnite
+     * @param $typeDonneeMesuree
+     * @param $unite
      * @param $valeur
      * @param $etiquette
      * @param $dateDebut
      * @param $dateFin
      */
-    public function __construct($idCalcul, $idTypeDonneeMesuree, $idUnite, $valeur, $etiquette, $dateDebut, $dateFin)
+    public function __construct($idCalcul, $typeDonneeMesuree, $unite, $valeur, $etiquette, $dateDebut, $dateFin)
     {
         $this->idCalcul = $idCalcul;
-        $this->idTypeDonneeMesuree = $idTypeDonneeMesuree;
-        $this->idUnite = $idUnite;
+        $this->typeDonneeMesuree = $typeDonneeMesuree;
+        $this->unite = $unite;
         $this->valeur = $valeur;
         $this->etiquette = $etiquette;
         $this->dateDebut = $dateDebut;
@@ -58,33 +58,33 @@ class Calcul
     /**
      * @return mixed
      */
-    public function getIdTypeDonneeMesuree()
+    public function getTypeDonneeMesuree()
     {
-        return $this->idTypeDonneeMesuree;
+        return $this->typeDonneeMesuree;
     }
 
     /**
-     * @param mixed $idTypeDonneeMesuree
+     * @param mixed $typeDonneeMesuree
      */
-    public function setIdTypeDonneeMesuree($idTypeDonneeMesuree)
+    public function setTypeDonneeMesuree($typeDonneeMesuree)
     {
-        $this->idTypeDonneeMesuree = $idTypeDonneeMesuree;
+        $this->typeDonneeMesuree = $typeDonneeMesuree;
     }
 
     /**
      * @return mixed
      */
-    public function getIdUnite()
+    public function getUnite()
     {
-        return $this->idUnite;
+        return $this->unite;
     }
 
     /**
-     * @param mixed $idUnite
+     * @param mixed $unite
      */
-    public function setIdUnite($idUnite)
+    public function setUnite($unite)
     {
-        $this->idUnite = $idUnite;
+        $this->unite = $unite;
     }
 
     /**

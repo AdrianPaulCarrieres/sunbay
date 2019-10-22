@@ -10,21 +10,21 @@ class DonneeMesuree
     private $idDonneeMesuree;
     private $valeur;
     private $instant;
-    private $idTypeDonneeMesuree;
+    private $typeDonneeMesuree;
 
     /**
      * DonneeMesuree constructor.
      * @param $idDonneeMesuree
      * @param $valeur
      * @param $instant
-     * @param $idTypeDonneeMesuree
+     * @param $typeDonneeMesuree
      */
-    public function __construct($idDonneeMesuree, $valeur, $instant, $idTypeDonneeMesuree)
+    public function __construct($idDonneeMesuree, $valeur, $instant, $typeDonneeMesuree)
     {
         $this->idDonneeMesuree = $idDonneeMesuree;
         $this->valeur = $valeur;
         $this->instant = $instant;
-        $this->idTypeDonneeMesuree = $idTypeDonneeMesuree;
+        $this->typeDonneeMesuree = $typeDonneeMesuree;
     }
 
     /**
@@ -78,16 +78,16 @@ class DonneeMesuree
     /**
      * @return mixed
      */
-    public function getIdTypeDonneeMesuree()
+    public function getTypeDonneeMesuree()
     {
-        return $this->idTypeDonneeMesuree;
+        return $this->typeDonneeMesuree;
     }
 
     /**
-     * @param mixed $idTypeDonneeMesuree
+     * @param mixed $typeDonneeMesuree
      */
-    public function setIdTypeDonneeMesuree($idTypeDonneeMesuree)
+    public function setTypeDonneeMesuree($typeDonneeMesuree)
     {
-        $this->idTypeDonneeMesuree = $idTypeDonneeMesuree;
+        $this->typeDonneeMesuree = $typeDonneeMesuree;
     }
 }

@@ -10,7 +10,7 @@ class DonneeMesureeDAO implements DonneeMesureeSQL
     public static function getInstance()
     {
         if(is_null(self::$instance)) {
-            self::$instance = new BaseDeDonnees();
+            self::$instance = new DonneeMesureeDAO();
         }
         return self::$instance;
     }
@@ -32,11 +32,13 @@ class DonneeMesureeDAO implements DonneeMesureeSQL
             $instant = $item[DonneeMesuree::CLE_INSTANT];
             $idTypeDonneeMesuree = $item[DonneeMesuree::CLE_ID_TYPE_DONNEE_MESUREE];
 
+            $typeDonneeMesuree = TypeDonneeMesureeDAO::getInstance()->trouverDonneeMesureeParId($idTypeDonneeMesuree);
+
             $donneeMesuree = new DonneeMesuree(
                 $idDonneeMesuree,
                 $valeur,
                 $instant,
-                $idTypeDonneeMesuree
+                $typeDonneeMesuree
             );
             array_push($this->listeDonneeMesuree, $donneeMesuree);
         }
