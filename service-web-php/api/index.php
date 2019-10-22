@@ -1,19 +1,16 @@
 <?php
 
-require_once('../secure/env.developpement.php');
-require_once('modele/Calcul.php');
-require_once('modele/DonneeMesuree.php');
-require_once('modele/TypeDonneeMesuree.php');
-require_once('modele/Unite.php');
-require_once('donnees/BaseDeDonneesSQL.php');
-require_once('donnees/BaseDeDonnees.php');
-require_once('donnees/DonneeMesureeSQL.php');
-require_once('donnees/DonneeMesureeDAO.php');
-require_once('donnees/UniteSQL.php');
-require_once('donnees/UniteDAO.php');
-require_once('donnees/CalculSQL.php');
-require_once('donnees/CalculDAO.php');
-require_once('donnees/TypeDonneeMesureeSQL.php');
-require_once('donnees/TypeDonneeMesureeDAO.php');
+require_once('required.php');
 
-echo CalculDAO::getInstance()->exporter();
+if ( isset($_GET['typeDonnee']) ) $typeDonnee = htmlentities($_GET['typeDonnee']);
+if ( isset($_GET['plage']) ) $plage = htmlentities($_GET['plage']);
+
+if ( !(isset($typeDonnee) || isset($plage)) ) exit();
+
+if ( !($typeDonnee == 'luminosite' || $typeDonnee == 'temperature' ) ) exit();
+if ( !($plage == 'jour' || $plage == 'mois' || $plage == 'annee') ) exit();
+
+$calculDAO = CalculDAO::getInstance();
+$calculDAO->recupererListeCalculParTypeDonneeEtPlage($typeDonnee, $plage);
+
+echo $calculDAO->exporter();
