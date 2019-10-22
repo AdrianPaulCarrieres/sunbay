@@ -10,7 +10,7 @@ class CalculDAO implements CalculSQL
     public static function getInstance()
     {
         if(is_null(self::$instance)) {
-            self::$instance = new BaseDeDonnees();
+            self::$instance = new CalculDAO();
         }
         return self::$instance;
     }
@@ -46,5 +46,6 @@ class CalculDAO implements CalculSQL
             );
             array_push($this->listeCalcul, $calcul);
         }
+        return $this->listeCalcul;
     }
 }
