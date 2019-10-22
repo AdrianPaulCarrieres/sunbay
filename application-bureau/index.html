@@ -10,10 +10,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <!-- Compiled and minified JavaScript -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link  href="css/accueil.css" rel="stylesheet">
 </head>
 <body>
+
+</body>
+<script type="text/plain" id="page_accueil">
 <nav>
     <div class=" blue row" id="header">
         <a href="#" class=" col l6 center-align logo" style="color: #424242 ">Sunbay</a>
@@ -68,48 +72,8 @@
     <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
     <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
 </ul>
-
-<script type="application/javascript">
-    $('.dropdown-trigger').dropdown();
-    var ctx = document.getElementById('chartTemp').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['10h', '11h', '12h', '13h', '14h', '17h', '18h'],
-            datasets: [{
-                label: 'Température',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 42]
-            }]
-        },
-
-        // Configuration options go here
-        options: {}
-    });
-
-    var ctx = document.getElementById('chartLum').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['10h', '11h', '12h', '13h', '14h', '17h', '18h'],
-            datasets: [{
-                label: 'Luminosité',
-                backgroundColor: 'rgb(99, 255, 132)',
-                borderColor: 'rgb(99, 255, 132)',
-                data: [42, 50, 56, 57, 43, 32, 28]
-            }]
-        },
-
-        // Configuration options go here
-        options: {}
-    });
 </script>
+<script src="vues/Accueil.js"></script>
+<script src="controleurs/application.js"></script>
 </body>
 </html>
