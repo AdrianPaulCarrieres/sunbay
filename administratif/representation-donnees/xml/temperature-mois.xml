@@ -1,0 +1,42 @@
+<resultat>
+    <plage>mois</plage>
+    <unite-moment>semaine</unite-moment>
+    <type-donnee>temperature</type-donnee>
+    <unite>°C</unite>
+
+    <total>
+        <moyenne>29</moyenne>
+        <min>12</min>
+        <max>40</max>
+    </total>
+
+    <moment>
+        <numero>1</numero>
+        <moyenne>10</moyenne>
+        <min>5</min>
+        <max>15</max>
+    </moment>
+
+    <moment>
+        <numero>2</numero>
+        <moyenne>10</moyenne>
+        <min>5</min>
+        <max>15</max>
+    </moment>
+
+    <moment>
+        <numero>3</numero>
+        <moyenne>10</moyenne>
+        <min>5</min>
+        <max>15</max>
+    </moment>
+
+    <moment>
+        <numero>4</numero>
+        <moyenne>10</moyenne>
+        <min>5</min>
+        <max>15</max>
+    </moment>
+
+</resultat>
+
