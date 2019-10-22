@@ -7,8 +7,11 @@ var VueValeur = (function() {
             elementBody = document.getElementsByTagName("body")[0];
             elementBody.innerHTML = pageIndex;
 
-            var valeurActuelleText = document.getElementById("valeur-actuelle");
-            valeurActuelleText.innerHTML = "Température : " + valeurActuelle[0] + " ; Luminosité : " + valeurActuelle[1] + ".";
+            var valeurActuelleTemperatureText = document.getElementById("valeur-actuelle-temperature");
+            valeurActuelleTemperatureText.innerHTML = "<h1­>" + valeurActuelle[0] + "</h1>" + " °C";
+
+            var valeurActuelleLuminositeText = document.getElementById("valeur-actuelle-luminosite");
+            valeurActuelleLuminositeText.innerHTML = valeurActuelle[1];
 
             var comparaisonText = document.getElementById("comparaison");
             comparaisonText.innerHTML = comparaison;
