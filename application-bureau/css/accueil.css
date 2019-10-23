@@ -1,0 +1,30 @@
+#header{
+    background-color: blue;
+    font-size: 24px;
+    color: #424242 ;
+}
+a{
+    color: #424242 ;
+}
+
+body{
+   background-color:  #212121;
+}
+
+.logo{
+    font-size: 32px;
+}
+
+#ligne1{
+    margin-top: 50px;
+}
+
+#lux{
+    font-size: 80px;
+    color: #00ed00;
+}
+
+#temp{
+    font-size: 80px;
+    color: red;
+}
