@@ -29,8 +29,13 @@ class DonneeMesureeDAO implements DonneeMesureeSQL
         foreach ($curseur as $item) {
             $idDonneeMesuree = $item[DonneeMesuree::CLE_ID_DONNEE_MESUREE];
             $valeur = $item[DonneeMesuree::CLE_VALEUR];
-            $instant = $item[DonneeMesuree::CLE_INSTANT];
+            try {
+                $instant = new DateTime($item[DonneeMesuree::CLE_INSTANT]);
+            } catch (Exception $e) {
+//                echo $e->getMessage();
+            }
             $idTypeDonneeMesuree = $item[DonneeMesuree::CLE_ID_TYPE_DONNEE_MESUREE];
+
 
             $typeDonneeMesuree = TypeDonneeMesureeDAO::getInstance()->trouverTypeDonneeMesureeParId($idTypeDonneeMesuree);
 
