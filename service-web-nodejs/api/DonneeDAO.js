@@ -9,7 +9,7 @@ exports.enregistrerDonnee = async function(donnee)
 	var basededonnees = new Client(connexion);
 	await basededonnees.connect();
     
-    const INSERT_TEMPERATURE = {
+      const INSERT_TEMPERATURE = {
         name: 'enregistrerDonnee',
         text: 'INSERT INTO DONNEE (valeur, instant, id_type_donnee_mesuree) VALUES $1, $2, $3',
         values: [donnee.temperature, donnee.instant, 1],
@@ -34,7 +34,7 @@ exports.enregistrerDonnee = async function(donnee)
           console.log(res.rows[0])
         }
       })
-      
+      console.log(INSERT_TEMPERATURE);
       // promise
       basededonnees
         .query(INSERT_TEMPERATURE)

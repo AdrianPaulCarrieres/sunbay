@@ -13,8 +13,9 @@ var repondeur = async function(requete,reponse) {
     }
     
     requete.on('data'), function(data) {
+        console.log(data);
         var donnee = data + "";
-        var donnee_mesuree = donnee.split(";");
+        var donnee_mesuree = donnee.split(":");
         var instant = donnee_mesuree[0];
         var temperature = donnee_mesuree[1];
         var luminosite = donnee_mesuree[2];
