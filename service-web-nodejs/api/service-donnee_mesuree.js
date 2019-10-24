@@ -1,4 +1,4 @@
-var activiteDAO = require('./ActiviteDAO');
+var DonneeDAO = require('./DonneeDAO');
 //activiteDAO.tester();
 
 var http = require('http');
@@ -24,4 +24,4 @@ var repondeur = async function(requete,reponse) {
 }
 
 var serveur = http.createServer(repondeur);
-serveur.listen(8080, 'localhost', ()=>{console.log('Le serveur roule');});
+serveur.listen(8080, 'localhost', ()=>{console.log('Serveur en ligne.');});
