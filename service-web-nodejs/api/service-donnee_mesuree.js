@@ -1,4 +1,4 @@
-var DonneeDAO = require('./DonneeDAO');
+var donneeDAO = require('./DonneeDAO');
 //activiteDAO.tester();
 
 var http = require('http');
@@ -14,7 +14,13 @@ var repondeur = async function(requete,reponse) {
     
     requete.on('data'), function(data) {
         var donnee = data + "";
-        var donnee_mesuree = donnee.split("")
+        var donnee_mesuree = donnee.split(";");
+        var instant = donnee_mesuree[0];
+        var temperature = donnee_mesuree[1];
+        var luminosite = donnee_mesuree[2];
+
+        var donneeDAO = new donneeDAO();
+        donneeDAO.enregistrerDonnee(new Donnee(instant, temperature, luminosite));
     }
 	
 	//console.log('createServer() callback');
