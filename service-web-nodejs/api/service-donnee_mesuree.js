@@ -1,4 +1,6 @@
 var donneeDAO = require('./DonneeDAO');
+var donnee = require('../modele/Donnee');
+var qs = require('querystring');
 //activiteDAO.tester();
 
 var http = require('http');
@@ -7,27 +9,37 @@ var repondeur = async function(requete,reponse) {
 
     console.log('methode ' + requete.method);
     console.log('url ' + requete.url);
-	var json = 'test';
 	if(requete.method === 'POST') {
-        json = 'POST';
-    }
+        var body = '';
+        requete.on('data', function (data) {
+            console.log('on.data');
+            body += data;
+            // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+            if (body.length > 1e6) { 
+                // FLOOD ATTACK OR FAULTY CLIENT, NUKE REQUEST
+                response.writeHead(413, {'Content-Type': 'text/plain'}).end();
+                request.connection.destroy();
+            }
+        });
+        requete.on('end', function () {
+            console.log('on.end');
+            var POST = qs.parse(body);
+            console.log(body);
+            var instant = POST['instant'];
+            var temperature = POST['temperature'];
+            var luminosite = POST['luminosite'];
     
-    requete.on('data'), function(data) {
-        console.log(data);
-        var donnee = data + "";
-        var donnee_mesuree = donnee.split(":");
-        var instant = donnee_mesuree[0];
-        var temperature = donnee_mesuree[1];
-        var luminosite = donnee_mesuree[2];
-
-        var donneeDAO = new donneeDAO();
-        donneeDAO.enregistrerDonnee(new Donnee(instant, temperature, luminosite));
+            donneeDAO.enregistrerDonnee(new donnee.Donnee(instant, temperature, luminosite));
+            reponse.statusCode = 200;
+            reponse.setHeader('Content-type', 'text/plain');
+            reponse.end();
+        });
+    } else {
+        reponse.writeHead(405, {'Content-Type': 'text/plain'});
+        reponse.end();
     }
+
 	
-	//console.log('createServer() callback');
-	reponse.statusCode = 200;
-	reponse.setHeader('Content-type', 'text/plain');
-	reponse.end(json);
 }
 
 var serveur = http.createServer(repondeur);

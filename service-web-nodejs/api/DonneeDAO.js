@@ -1,4 +1,4 @@
-const {Client} = require('pg');
+const {Pool, Client} = require('pg');
 var connexion = {
 	  user: 'master', password: '123qweQWE',
 	  host: '192.168.56.10', port: 5432,
@@ -6,46 +6,38 @@ var connexion = {
 
 exports.enregistrerDonnee = async function(donnee)
 {
-	var basededonnees = new Client(connexion);
-	await basededonnees.connect();
-    
-      const INSERT_TEMPERATURE = {
-        name: 'enregistrerDonnee',
-        text: 'INSERT INTO DONNEE (valeur, instant, id_type_donnee_mesuree) VALUES $1, $2, $3',
-        values: [donnee.temperature, donnee.instant, 1],
-      }
-      const INSERT_LUMINOSITE = {
-        name: 'enregistrerDonnee',
-        text: 'INSERT INTO DONNEE (valeur, instant, id_type_donnee_mesuree) VALUES $1, $2, $3',
-        values: [donnee.luminosite, donnee.instant, 2],
-      }
-      // callback
-      basededonnees.query(INSERT_TEMPERATURE, (err, res) => {
-        if (err) {
-          console.log(err.stack)
-        } else {
-          console.log(res.rows[0])
-        }
-      })
-      basededonnees.query(INSERT_LUMINOSITE, (err, res) => {
-        if (err) {
-          console.log(err.stack)
-        } else {
-          console.log(res.rows[0])
-        }
-      })
-      console.log(INSERT_TEMPERATURE);
-      // promise
-      basededonnees
-        .query(INSERT_TEMPERATURE)
-        .then(res => console.log(res.rows[0]))
-        .catch(e => console.error(e.stack));
-      basededonnees
-        .query(INSERT_LUMINOSITE)
-        .then(res => console.log(res.rows[0]))
-        .catch(e => console.error(e.stack))
+  console.log('enregistrerDonnee');
 
-        basededonnees.end();
+	var basededonnees = new Pool(connexion);
+	
+    
+  const INSERT_TEMPERATURE = {
+    name: 'enregistrerDonnee',
+    text: 'INSERT INTO donnee_mesuree (valeur, instant, id_type_donnee_mesuree) VALUES ($1, $2, $3)',
+    values: [donnee.temperature, donnee.instant, 1],
+  }
+  const INSERT_LUMINOSITE = {
+    name: 'enregistrerDonnee',
+    text: 'INSERT INTO donnee_mesuree (valeur, instant, id_type_donnee_mesuree) VALUES ($1, $2, $3)',
+    values: [donnee.luminosite, donnee.instant, 2],
+  }
+  // callback
+  basededonnees.query(INSERT_TEMPERATURE, (err, res) => {
+    if (err) {
+      console.log(err.stack)
+    } else {
+      console.log(res.rows[0])
+    }
+  })
+  basededonnees.query(INSERT_LUMINOSITE, (err, res) => {
+    if (err) {
+      console.log(err.stack)
+    } else {
+      console.log(res.rows[0])
+    }
+  })
+
+  basededonnees.end();
 }
 
 /*
