@@ -15,6 +15,10 @@
 
             var luminositeVue = new LuminositeVue();
             luminositeVue.afficher();
+        }else if(hash.match(/^#tableau/)){
+
+            var tableau = new TableauVue();
+            tableau.afficher();
         }
     }
 

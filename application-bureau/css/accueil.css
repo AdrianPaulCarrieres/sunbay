@@ -36,3 +36,13 @@ body{
 .chartAccueil{
     height: 325px;
 }
+
+table{
+    margin-top: 25px;
+    color: white;
+    border: solid 2px #424242 !important;
+}
+td{
+    text-align: center;
+    border-bottom: 2px solid #424242;
+}

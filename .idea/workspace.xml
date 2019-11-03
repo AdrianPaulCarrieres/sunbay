@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="102c11b2-56a6-45a6-8bef-ae5b2f45c932" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/application-bureau/vues/LuminositeVue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application-bureau/vues/TableauVue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application-bureau/controleurs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/application-bureau/controleurs/application.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application-bureau/css/accueil.css" beforeDir="false" afterPath="$PROJECT_DIR$/application-bureau/css/accueil.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application-bureau/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application-bureau/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application-bureau/vues/Accueil.js" beforeDir="false" afterPath="$PROJECT_DIR$/application-bureau/vues/Accueil.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +99,7 @@
       <workItem from="1571776120582" duration="3673000" />
       <workItem from="1571780102435" duration="3686000" />
       <workItem from="1572382667872" duration="2125000" />
-      <workItem from="1572801308214" duration="5697000" />
+      <workItem from="1572801308214" duration="7965000" />
     </task>
     <servers />
   </component>
