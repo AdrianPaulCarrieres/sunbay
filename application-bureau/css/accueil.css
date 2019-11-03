@@ -28,3 +28,11 @@ body{
     font-size: 80px;
     color: red;
 }
+
+.chartLum{
+    height: 200px !important;
+}
+
+.chartAccueil{
+    height: 325px;
+}

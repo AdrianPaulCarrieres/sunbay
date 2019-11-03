@@ -10,7 +10,7 @@ var Accueil = (function () {
 
 
             var ctx = document.getElementById('chartLum').getContext('2d');
-            ctx.height = 500;
+            ctx.height = 200;
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'line',
