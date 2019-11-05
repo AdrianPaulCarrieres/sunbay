@@ -7,30 +7,61 @@ var Accueil = (function () {
         this.afficher = function () {
             elementBody = document.getElementsByTagName("body")[0];
             elementBody.innerHTML = header + pageAccueil;
+            var tableauLum = new Array();
+            var tableauMoments = new Array();
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=jour");
+            // If specified, responseType must be empty string or "document"
+            xhr.responseType = 'document';
 
+// Force the response to be parsed as XML
+            xhr.overrideMimeType('text/xml');
 
-            var ctx = document.getElementById('chartLum').getContext('2d');
-            ctx.height = 200;
-            var chart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: 'line',
+            xhr.onload = function () {
+                if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+                    console.log(xhr.response, xhr.responseXML);
+                    alert(xhr.responseXML);
+                    valeurs = xhr.responseXML.getElementsByTagName("moyenne");
+                    valeursMoments = xhr.responseXML.getElementsByTagName("numero");
+                    for (i = 1; i< valeurs.length; i++) {
+                        tableauLum.push( valeurs[i].childNodes[0].nodeValue);
+                        console.log(tableauLum);
+                    }
+                    // delete tableauLum[0];
+                    for (i = 0; i< valeursMoments.length; i++) {
+                        tableauMoments.push( valeursMoments[i].childNodes[0].nodeValue);
+                        console.log(tableauMoments);
+                    }
+                    var ctx = document.getElementById('chartLum').getContext('2d');
+                    ctx.height = 200;
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
 
-                // The data for our dataset
-                data: {
-                    labels: ['10h', '11h', '12h', '13h', '14h', '17h', '18h'],
-                    datasets: [{
-                        label: 'Luminosité',
-                        backgroundColor: 'rgb(99, 255, 132)',
-                        borderColor: 'rgb(99, 255, 132)',
-                        data: [42, 50, 56, 57, 43, 32, 28]
-                    }]
-                },
+                        // The data for our dataset
+                        data: {
+                            labels: tableauMoments,
+                            datasets: [{
+                                label: 'Luminosité',
+                                backgroundColor: 'rgb(99, 255, 132)',
+                                borderColor: 'rgb(99, 255, 132)',
+                                data: tableauLum
+                            }]
+                        },
 
-                // Configuration options go here
-                options: {
-                    maintainAspectRatio: false,
+                        // Configuration options go here
+                        options: {
+                            maintainAspectRatio: false,
+                        }
+                    });
                 }
-            });
+            };
+            xhr.send();
+
+
+
+
+
         }
     }
 })();
