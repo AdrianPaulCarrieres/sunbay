@@ -13,10 +13,18 @@
     </header>
     <section id="contenu">
         <header><h2>Ajouter une donnée mesurée</h2></header>
-        <form action="http://localhost:80/" method="post">
+        <form action="http://localhost:8080/" method="post">
             <div>
-                <label for="donnee_mesuree">Donnée mesurée</label>
-                <input type="text" name="donnee_mesuree">
+                <label for="instant">instant</label>
+                <input type="text" name="instant">
+            </div>
+            <div>
+                <label for="temperature">temperature</label>
+                <input type="text" name="temperature">
+            </div>
+            <div>
+                <label for="luminosite">luminosite</label>
+                <input type="text" name="luminosite">
             </div>
             <input type="submit">
         </form>
