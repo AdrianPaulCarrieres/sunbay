@@ -2,11 +2,9 @@
 
 ## Format de l'url pour le service web de lecture
 
-**$typeDonnee** = 'luminosite' ou 'temperature'
+**$typeDonnee** = 'luminosite'
 
 **$plage** = 'jour' ou 'mois' ou 'annee'
-
-**$type** = 
 
 * URL:
 > https://hote/index.php?typeDonnee=$typeDonnee&plage=$plage
