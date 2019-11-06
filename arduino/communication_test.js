@@ -1,18 +1,7 @@
-const SerialPort = require('serialport');
-const Readline = require('@serialport/parser-readline');
-
-var  portName = process.argv[2];
-
-const port = new SerialPort(portName, { baudRate: 9600 });
-const parser = port.pipe(new Readline({ delimiter: '\n' }));
-
-// Read the port data
-port.on("open", () => {
-    console.log('serial port open');
-});
-parser.on('data', data => {
-
+function loop(){
+    
     var date = new Date();
+    var data = -10 + Math.random() * 1000;
 
     valeurInstant = `${
         (date.getMonth() + 1).toString().padStart(2, '0')}/${
@@ -25,7 +14,9 @@ parser.on('data', data => {
     console.log('[',valeurInstant, '] ', data);
 
     sendPost(valeurInstant, data);
-});
+
+    setTimeout(loop, 2000);
+}
 
 function sendPost(instant, luminosite){
     const https = require('https');
@@ -61,3 +52,5 @@ function sendPost(instant, luminosite){
     req.write(data);
     req.end();
 }
+
+loop();
