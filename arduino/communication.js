@@ -11,6 +11,28 @@ port.on("open", () => {
     console.log('serial port open');
 });
 parser.on('data', data => {
-    console.log('got word from arduino:', data);
+
+    var date = new Date();
+
+    valeurInstant = `${
+        (date.getMonth() + 1).toString().padStart(2, '0')}/${
+        date.getDate().toString().padStart(2, '0')}/${
+        date.getFullYear().toString().padStart(4, '0')} ${
+        date.getHours().toString().padStart(2, '0')}:${
+        date.getMinutes().toString().padStart(2, '0')}:${
+        date.getSeconds().toString().padStart(2, '0')}`;
+
+    console.log('[',valeurInstant, '] ', data);
+
+    // var URL = 'localhost';
+    // var xhr = new XMLHttpRequest();
+
+    // xhr.open("POST", URL, true);
+    // xhr.setRequestHeader('Content-Type', 'application/json');
+    // xhr.send(JSON.stringify({
+    //     instant: valeurInstant,
+    //     luminosite: data
+    // }));
+
 });
 
