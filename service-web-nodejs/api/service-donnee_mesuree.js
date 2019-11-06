@@ -23,13 +23,13 @@ var repondeur = async function(requete,reponse) {
         });
         requete.on('end', function () {
             console.log('on.end');
-            var POST = qs.parse(body);
+            var POST = JSON.parse(body);
             console.log(body);
             var instant = POST['instant'];
-            var temperature = POST['temperature'];
             var luminosite = POST['luminosite'];
+            console.log("penis" +instant+luminosite);
     
-            donneeDAO.enregistrerDonnee(new donnee.Donnee(instant, temperature, luminosite));
+            donneeDAO.enregistrerDonnee(new donnee.Donnee(instant, luminosite));
             reponse.statusCode = 200;
             reponse.setHeader('Content-type', 'text/plain');
             reponse.end();

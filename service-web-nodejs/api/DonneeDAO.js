@@ -10,33 +10,21 @@ exports.enregistrerDonnee = async function(donnee)
 
 	var basededonnees = new Pool(connexion);
 	
-    
-  const INSERT_TEMPERATURE = {
-    name: 'enregistrerDonnee',
-    text: 'INSERT INTO donnee_mesuree (valeur, instant, id_type_donnee_mesuree) VALUES ($1, $2, $3)',
-    values: [donnee.temperature, donnee.instant, 1],
-  }
   const INSERT_LUMINOSITE = {
     name: 'enregistrerDonnee',
     text: 'INSERT INTO donnee_mesuree (valeur, instant, id_type_donnee_mesuree) VALUES ($1, $2, $3)',
     values: [donnee.luminosite, donnee.instant, 2],
   }
   // callback
-  basededonnees.query(INSERT_TEMPERATURE, (err, res) => {
-    if (err) {
-      console.log(err.stack)
-    } else {
-      console.log(res.rows[0])
-    }
-  })
+  
   basededonnees.query(INSERT_LUMINOSITE, (err, res) => {
     if (err) {
-      console.log(err.stack)
+      console.log(err.stack);
     } else {
-      console.log(res.rows[0])
+      console.log(res.rows[0]);
     }
   })
-
+  console.log(INSERT_LUMINOSITE);
   basededonnees.end();
 }
 
