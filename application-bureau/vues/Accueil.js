@@ -10,10 +10,10 @@ var Accueil = (function () {
             var tableauLum = new Array();
             var tableauMoments = new Array();
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=jour", false);
+            xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=jour", false);//probleme a cause de cors, fonctionne que si requete envoye depuis localhost
             xhr.overrideMimeType('text/xml');
 
-            xhr.onload = function () {
+            xhr.onreadystatechange = function () {
                 if (xhr.readyState === xhr.DONE && xhr.status === 200) {
                     console.log(xhr.response, xhr.responseXML);
                     valeurs = xhr.responseXML.getElementsByTagName("moyenne");
