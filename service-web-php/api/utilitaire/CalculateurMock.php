@@ -380,7 +380,7 @@ final class CalculateurMock
             ';
     }
 
-    public function recupererDonneesAnnee()
+    static public function recupererDonneesAnnee()
     {
         return '
             <resultat>

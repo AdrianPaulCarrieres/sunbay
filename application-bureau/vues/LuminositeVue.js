@@ -5,6 +5,84 @@ var LuminositeVue = (function () {
     return function () {
 
         this.afficher = function () {
+            var tableauLum = new Array();
+            var tableauMoments = new Array();
+            var tableauLumMois = new Array();
+            var tableauMomentsMois = new Array();
+            var tableauLumAnnee = new Array();
+            var tableauMomentsAnnee = new Array();
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=jour", false);
+            // If specified, responseType must be empty string or "document"
+
+// Force the response to be parsed as XML
+            xhr.overrideMimeType('text/xml');
+
+            xhr.onload = function () {
+                if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+                    console.log(xhr.response, xhr.responseXML);
+                    valeurs = xhr.responseXML.getElementsByTagName("moyenne");
+                    valeursMoments = xhr.responseXML.getElementsByTagName("numero");
+                    for (i = 1; i< valeurs.length; i++) {
+                        tableauLum.push( valeurs[i].childNodes[0].nodeValue)
+                    }
+                    // delete tableauLum[0];
+                    for (i = 0; i< valeursMoments.length; i++) {
+                        tableauMoments.push( valeursMoments[i].childNodes[0].nodeValue);
+                    }
+                    console.log(tableauMoments);
+                }
+            };
+            xhr.send(null);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=mois", false);
+            // If specified, responseType must be empty string or "document"
+
+// Force the response to be parsed as XML
+            xhr.overrideMimeType('text/xml');
+
+            xhr.onload = function () {
+                if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+                    console.log(xhr.response, xhr.responseXML);
+                    valeurs = xhr.responseXML.getElementsByTagName("moyenne");
+                    valeursMoments = xhr.responseXML.getElementsByTagName("numero");
+                    for (i = 1; i< valeurs.length; i++) {
+                        tableauLumMois.push( valeurs[i].childNodes[0].nodeValue)
+                    }
+                    // delete tableauLum[0];
+                    for (i = 0; i< valeursMoments.length; i++) {
+                        tableauMomentsMois.push( valeursMoments[i].childNodes[0].nodeValue);
+                    }
+                    console.log(tableauMomentsMois);
+                }
+            };
+            xhr.send(null);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=annee", false);
+            // If specified, responseType must be empty string or "document"
+
+// Force the response to be parsed as XML
+            xhr.overrideMimeType('text/xml');
+
+            xhr.onload = function () {
+                if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+                    console.log(xhr.response, xhr.responseXML);
+                    valeurs = xhr.responseXML.getElementsByTagName("moyenne");
+                    valeursMoments = xhr.responseXML.getElementsByTagName("numero");
+                    for (i = 1; i< valeurs.length; i++) {
+                        tableauLumAnnee.push( valeurs[i].childNodes[0].nodeValue)
+                    }
+                    // delete tableauLum[0];
+                    for (i = 0; i< valeursMoments.length; i++) {
+                        tableauMomentsAnnee.push( valeursMoments[i].childNodes[0].nodeValue);
+                    }
+                    console.log(tableauMomentsAnnee);
+                }
+            };
+            xhr.send(null);
+
             elementBody = document.getElementsByTagName("body")[0];
             elementBody.innerHTML = header + pageLuminosite;
             var ctx = document.getElementById('chartLumJour').getContext('2d');
@@ -15,12 +93,12 @@ var LuminositeVue = (function () {
 
                 // The data for our dataset
                 data: {
-                    labels: ['10h', '11h', '12h', '13h', '14h', '17h', '18h'],
+                    labels: tableauMoments,
                     datasets: [{
                         label: 'Luminosité',
                         backgroundColor: 'rgb(99, 255, 132)',
                         borderColor: 'rgb(99, 255, 132)',
-                        data: [42, 50, 56, 57, 43, 32, 28]
+                        data: tableauLum
                     }]
                 },
 
@@ -38,12 +116,12 @@ var LuminositeVue = (function () {
 
                 // The data for our dataset
                 data: {
-                    labels: ['10h', '11h', '12h', '13h', '14h', '17h', '18h'],
+                    labels: tableauMomentsMois,
                     datasets: [{
                         label: 'Luminosité',
                         backgroundColor: 'rgb(99, 255, 132)',
                         borderColor: 'rgb(99, 255, 132)',
-                        data: [42, 50, 56, 57, 43, 32, 28]
+                        data: tableauLumMois
                     }]
                 },
 
@@ -61,12 +139,12 @@ var LuminositeVue = (function () {
 
                 // The data for our dataset
                 data: {
-                    labels: ['10h', '11h', '12h', '13h', '14h', '17h', '18h'],
+                    labels: tableauMomentsAnnee,
                     datasets: [{
                         label: 'Luminosité',
                         backgroundColor: 'rgb(99, 255, 132)',
                         borderColor: 'rgb(99, 255, 132)',
-                        data: [42, 50, 56, 57, 43, 32, 28]
+                        data: tableauLumAnnee
                     }]
                 },
 
