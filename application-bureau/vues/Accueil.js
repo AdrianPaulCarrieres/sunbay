@@ -7,7 +7,29 @@ var Accueil = (function () {
         this.afficher = function () {
             elementBody = document.getElementsByTagName("body")[0];
             elementBody.innerHTML = header + pageAccueil;
+            var tableauLum = new Array();
+            var tableauMoments = new Array();
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=jour", false);//probleme a cause de cors, fonctionne que si requete envoye depuis localhost
+            xhr.overrideMimeType('text/xml');
 
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+                    console.log(xhr.response, xhr.responseXML);
+                    valeurs = xhr.responseXML.getElementsByTagName("moyenne");
+                    valeursMoments = xhr.responseXML.getElementsByTagName("numero");
+                    for (i = 1; i< valeurs.length; i++) {
+                        tableauLum.push( valeurs[i].childNodes[0].nodeValue)
+                    }
+                    // delete tableauLum[0];
+                    for (i = 0; i< valeursMoments.length; i++) {
+                        tableauMoments.push( valeursMoments[i].childNodes[0].nodeValue);
+                    }
+                    console.log(tableauMoments)
+                    var tabtest = tableauMoments;
+                }
+            };
+            xhr.send(null);
 
             var ctx = document.getElementById('chartLum').getContext('2d');
             ctx.height = 200;
@@ -17,12 +39,12 @@ var Accueil = (function () {
 
                 // The data for our dataset
                 data: {
-                    labels: ['10h', '11h', '12h', '13h', '14h', '17h', '18h'],
+                    labels: tableauMoments,
                     datasets: [{
                         label: 'Luminosité',
                         backgroundColor: 'rgb(99, 255, 132)',
                         borderColor: 'rgb(99, 255, 132)',
-                        data: [42, 50, 56, 57, 43, 32, 28]
+                        data: tableauLum
                     }]
                 },
 
@@ -31,6 +53,11 @@ var Accueil = (function () {
                     maintainAspectRatio: false,
                 }
             });
+
+
+
+
+
         }
     }
 })();
