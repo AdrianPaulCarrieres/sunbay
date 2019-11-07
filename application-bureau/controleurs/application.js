@@ -15,10 +15,20 @@
 
             var luminositeVue = new LuminositeVue();
             luminositeVue.afficher();
-        }else if(hash.match(/^#tableau/)){
+        }else if(hash.match(/^#tableauMois/)){
 
             var tableau = new TableauVue();
-            tableau.afficher();
+            tableau.afficher("mois");
+        }
+        else if(hash.match(/^#tableauJour/)){
+
+            var tableau = new TableauVue();
+            tableau.afficher("jour");
+        }
+        else if(hash.match(/^#tableauAnnee/)){
+
+            var tableau = new TableauVue();
+            tableau.afficher("annee");
         }
     }
 

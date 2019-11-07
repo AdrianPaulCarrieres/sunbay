@@ -10,11 +10,7 @@ var Accueil = (function () {
             var tableauLum = new Array();
             var tableauMoments = new Array();
             var xhr = new XMLHttpRequest();
-            var tabtest;
             xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=jour", false);
-            // If specified, responseType must be empty string or "document"
-
-// Force the response to be parsed as XML
             xhr.overrideMimeType('text/xml');
 
             xhr.onload = function () {
@@ -34,7 +30,7 @@ var Accueil = (function () {
                 }
             };
             xhr.send(null);
-            console.log(tabtest)
+
             var ctx = document.getElementById('chartLum').getContext('2d');
             ctx.height = 200;
             var chart = new Chart(ctx, {
