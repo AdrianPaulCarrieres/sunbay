@@ -1,5 +1,5 @@
-var valeurActuelle = [5, 6];
-var comparaison = "La journee est froide et peu lumineuse";
+var valeurActuelle = 5;
+var comparaison = "La journée est peu lumineuse.";
 var tabAujourdHui = [0, 5, 10];
 var tabDebut = [-20, 4, 30];
 
