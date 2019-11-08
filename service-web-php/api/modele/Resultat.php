@@ -94,7 +94,7 @@ class Resultat
     }
 
     /**
-     * @return mixed
+     * @return Moment
      */
     public function getTotalMoment()
     {
@@ -102,7 +102,7 @@ class Resultat
     }
 
     /**
-     * @param mixed $totalMoment
+     * @param Moment $totalMoment
      */
     public function setTotalMoment($totalMoment)
     {
@@ -110,7 +110,7 @@ class Resultat
     }
 
     /**
-     * @return mixed
+     * @return array<Moment>
      */
     public function getListeMoment()
     {
@@ -118,7 +118,7 @@ class Resultat
     }
 
     /**
-     * @param mixed $listeMoment
+     * @param array<Moment> $listeMoment
      */
     public function setListeMoment($listeMoment)
     {
