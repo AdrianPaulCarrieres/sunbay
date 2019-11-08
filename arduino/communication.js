@@ -28,7 +28,7 @@ parser.on('data', data => {
 });
 
 function sendPost(instant, luminosite){
-    const https = require('https');
+    const https = require('http');
 
     const data = JSON.stringify({
         instant: instant,
@@ -38,7 +38,7 @@ function sendPost(instant, luminosite){
     const options = {
         hostname: 'localhost',
         port: 8080,
-        path: '',
+        path: '/',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

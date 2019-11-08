@@ -1,7 +1,7 @@
 const {Pool, Client} = require('pg');
 var connexion = {
-	  user: 'master', password: '123qweQWE',
-	  host: '192.168.56.10', port: 5432,
+	  user: 'sunbay', password: 'Motivation*',
+	  host: 'vpsloic.loicbertrand.net', port: 2232,
 	  database: 'sunbay'};
 
 exports.enregistrerDonnee = async function(donnee)

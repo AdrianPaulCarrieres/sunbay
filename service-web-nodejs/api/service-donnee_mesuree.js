@@ -1,6 +1,6 @@
 var donneeDAO = require('./DonneeDAO');
 var donnee = require('../modele/Donnee');
-var qs = require('querystring');
+// var qs = require('querystring');
 //activiteDAO.tester();
 
 var http = require('http');
@@ -9,6 +9,7 @@ var repondeur = async function(requete,reponse) {
 
     console.log('methode ' + requete.method);
     console.log('url ' + requete.url);
+    
 	if(requete.method === 'POST') {
         var body = '';
         requete.on('data', function (data) {
@@ -22,17 +23,24 @@ var repondeur = async function(requete,reponse) {
             }
         });
         requete.on('end', function () {
+            
             console.log('on.end');
-            var POST = JSON.parse(body);
+
             console.log(body);
+            var POST = JSON.parse(body);
+
             var instant = POST['instant'];
             var luminosite = POST['luminosite'];
-            console.log("penis" +instant+luminosite);
+            luminosite = luminosite.replace(/\n|\r/g, '');
+
+            console.log(instant+luminosite);
     
             donneeDAO.enregistrerDonnee(new donnee.Donnee(instant, luminosite));
+            
             reponse.statusCode = 200;
             reponse.setHeader('Content-type', 'text/plain');
             reponse.end();
+
         });
     } else {
         reponse.writeHead(405, {'Content-Type': 'text/plain'});
