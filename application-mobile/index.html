@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>SunBay Mobile</title>
+
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body class="grey darken-4">
+    Erreur dans l'app !
+    <script type="plain/text" id="page-index">
+        <div class="row">
+            <nav>
+                <div class="nav-wrapper indigo accent-4">
+                    <div class="brand-logo">SunBay</div>
+                </div>
+            </nav>
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="responsive-img" src="images/radiateur.jpg">
+                        <span class="card-title">Luminosité</span>
+                    </div>
+                    <div class="card-content">
+                        <p id="valeur-actuelle-luminosite"></p>
+                    </div>
+                </div>
+            </div>
+            <h1>Aujourd'hui</h1>
+            <table class="centered indigo accent-4" id="tableau-aujourdhui">
+                <thead class="indigo accent-3">
+                    <tr class="indigo accent-1">
+                        <th>Min</th>
+                        <th>Moyenne</th>
+                        <th>Max</th>
+                    </tr>
+                </thead>
+                <tr id="tab-aujourdhui">
+                </tr>
+            </table>
+            <h1>Depuis le début</h1>
+            <table class="centered" id="tableau-debut">
+                <thead>
+                    <tr>
+                        <th>Min</th>
+                        <th>Moyenne</th>
+                        <th>Max</th>
+                    </tr>
+                </thead>
+                <tr id="tab-debut">
+                    <td id="tab-debut-min"></td>
+                    <td id="tab-debut-moyenne"></td>
+                    <td id="tab-debut-max"></td>
+                </tr>
+            </table>
+        </div>
+    </script>
+    <script src="vue/VueValeur.js "></script>
+    <script src="controller/application.js "></script>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+
+</html>
