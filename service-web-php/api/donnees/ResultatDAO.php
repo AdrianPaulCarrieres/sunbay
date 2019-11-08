@@ -46,6 +46,9 @@ class ResultatDAO implements ResultatSQL
                 $requetetotal = ResultatSQL::SQL_TROUVER_TOTAL_ANNEE;
                 $requeteliste = ResultatSQL::SQL_LISTER_LUMINOSITE_ANNEE_PAR_MOIS;
                 break;
+            default:
+                $requetetotal = ResultatSQL::SQL_TROUVER_TOTAL_ANNEE;
+                $requeteliste = ResultatSQL::SQL_LISTER_LUMINOSITE_ANNEE_PAR_MOIS;
         }
 
         $curseur = $this->connection->query($requetetotal);
