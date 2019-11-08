@@ -7,6 +7,29 @@ var VueValeur = (function() {
             elementBody = document.getElementsByTagName("body")[0];
             elementBody.innerHTML = pageIndex;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             var valeurActuelleLuminositeText = document.getElementById("valeur-actuelle-luminosite");
             valeurActuelleLuminositeText.innerHTML = "<h1­>La luminosité est actuellement de " + valeurActuelle + "</h1>" + " lux.";
 
