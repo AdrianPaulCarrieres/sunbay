@@ -19,14 +19,14 @@
     <script type="plain/text" id="page-index">
         <div class="row">
             <nav>
-                <div class="nav-wrapper blue lighten-1">
+                <div class="nav-wrapper indigo accent-4">
                     <div class="brand-logo">SunBay</div>
                 </div>
             </nav>
-            <div class="col s12" ­>
+            <div class="col s12">
                 <div class="card">
                     <div class="card-image">
-                        <img src="images/radiateur.jpg">
+                        <img class="responsive-img" src="images/radiateur.jpg">
                         <span class="card-title">Luminosité</span>
                     </div>
                     <div class="card-content">
@@ -35,22 +35,26 @@
                 </div>
             </div>
             <h1>Aujourd'hui</h1>
-            <table id="tableau-aujourdhui">
-                <tr>
-                    <th>Min</th>
-                    <th>Moyenne</th>
-                    <th>Max</th>
-                </tr>
+            <table class="centered" id="tableau-aujourdhui">
+                <thead>
+                    <tr>
+                        <th>Min</th>
+                        <th>Moyenne</th>
+                        <th>Max</th>
+                    </tr>
+                </thead>
                 <tr id="tab-aujourdhui">
                 </tr>
             </table>
             <h1>Depuis le début</h1>
-            <table id="tableau-debut">
-                <tr>
-                    <th>Min</th>
-                    <th>Moyenne</th>
-                    <th>Max</th>
-                </tr>
+            <table class="centered" id="tableau-debut">
+                <thead>
+                    <tr>
+                        <th>Min</th>
+                        <th>Moyenne</th>
+                        <th>Max</th>
+                    </tr>
+                </thead>
                 <tr id="tab-debut">
                     <td id="tab-debut-min"></td>
                     <td id="tab-debut-moyenne"></td>
