@@ -10,9 +10,6 @@ var VueValeur = (function() {
             var valeurActuelleLuminositeText = document.getElementById("valeur-actuelle-luminosite");
             valeurActuelleLuminositeText.innerHTML = "<h1­>La luminosité est actuellement de " + valeurActuelle + "</h1>" + " lux.";
 
-            var comparaisonText = document.getElementById("comparaison");
-            comparaisonText.innerHTML = comparaison;
-
             var tableauAujourdHuiText = document.getElementById("tab-aujourdhui");
             tableauAujourdHuiText.innerHTML = "";
             tabAujourdHui.forEach(element => {
