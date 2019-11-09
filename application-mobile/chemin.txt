@@ -1,0 +1,3 @@
+- Valeur sur le moment -> prendre jour puis la dernière moyenne dans la journée
+- tableau aujourd'hui -> prendre jour puis total
+- tableau dans l'annee -> prendre annee puis total
