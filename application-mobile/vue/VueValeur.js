@@ -16,65 +16,21 @@ var VueValeur = (function() {
                     var x, y, i, xlen, xmlDoc, txt;
                     xmlDoc = xhrJour.responseXML;
                     textTableau = "";
-                    for (let j = 0; j < xmlDoc.getElementsByTagName("moment").length; j++) {
-                        x = xmlDoc.getElementsByTagName("moment")[j];
+                    for (let j = 0; j < xmlDoc.getElementsByTagName("total").length; j++) {
+                        x = xmlDoc.getElementsByTagName("total")[j];
                         xlen = x.childNodes.length;
                         y = x.firstChild;
-                        textTableau += "<tr>";
                         for (i = 0; i < xlen; i++) {
                             if (y.nodeType == 1) {
                                 textTableau += "<td> " + y.childNodes[0].nodeValue + "</td>";
                             }
                             y = y.nextSibling;
                         }
-                        textTableau += "</tr>"
                     }
-                    document.getElementById("corps_tableau").innerHTML = textTableau;
-
-
-
-
-                    console.log(xhrJour
-                        .response, xhrJour
-                        .responseXML);
-
-                    nombreValeurs = xhrJour
-                        .responseXML.getElementByTagName("moment").length;
-                    valeurActuelle = xhrJour
-                        .responseXML
-
-                    valeurs = xhrJour
-                        .responseXML.getElementsByTagName("moyenne");
-                    valeursMoments = xhrJour
-                        .responseXML.getElementsByTagName("numero");
-                    for (i = 1; i < valeurs.length; i++) {
-                        tableauLum.push(valeurs[i].childNodes[0].nodeValue)
-                    }
-                    // delete tableauLum[0];
-                    for (i = 0; i < valeursMoments.length; i++) {
-                        tableauMoments.push(valeursMoments[i].childNodes[0].nodeValue);
-                    }
-                    console.log(tableauMoments)
-                    var tabtest = tableauMoments;
+                    document.getElementById("tab-aujourdhui").innerHTML = textTableau;
                 }
             };
             xhrJour.send(null);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -93,7 +49,6 @@ var VueValeur = (function() {
             tabDebut.forEach(element => {
                 tableauDebutText.innerHTML += "<td>" + element + "</td>";
             });
-
         }
     }
 })();
