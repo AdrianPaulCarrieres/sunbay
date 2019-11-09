@@ -38,6 +38,35 @@ var VueValeur = (function() {
 
 
 
+            var xhrDebut = new XMLHttpRequest();
+            xhrDebut.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=annnee", false); //probleme a cause de cors, fonctionne que si requete envoye depuis localhost
+            xhrDebut.overrideMimeType('text/xml');
+
+            xhrDebut.onreadystatechange = function() {
+                if (xhrDebut.readyState === xhrDebut.DONE && xhrDebut.status === 200) {
+                    console.log(xhrDebut.response, xhrDebut.responseXML);
+                    var x, y, i, xlen, xmlDoc, txt;
+                    xmlDoc = xhrDebut.responseXML;
+                    textTableau = "";
+                    textValeurActuelle = "";
+                    for (j = 0; j < xmlDoc.getElementsByTagName("total").length; j++) {
+                        x = xmlDoc.getElementsByTagName("total")[j];
+                        xlen = x.childNodes.length;
+                        y = x.firstChild;
+                        for (i = 0; i < xlen; i++) {
+                            if (y.nodeType == 1) {
+                                textTableau += "<td> " + y.childNodes[0].nodeValue + "</td>";
+                            }
+                            y = y.nextSibling;
+                        }
+                    }
+                    document.getElementById("tab-debut").innerHTML = textTableau;
+                }
+            };
+            xhrJour.send(null);
+
+
+
 
 
 
