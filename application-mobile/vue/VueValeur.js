@@ -16,18 +16,25 @@ var VueValeur = (function() {
                     var x, y, i, xlen, xmlDoc, txt;
                     xmlDoc = xhrJour.responseXML;
                     textTableau = "";
-                    for (let j = 0; j < xmlDoc.getElementsByTagName("total").length; j++) {
+                    textValeurActuelle = "";
+                    for (j = 0; j < xmlDoc.getElementsByTagName("total").length; j++) {
                         x = xmlDoc.getElementsByTagName("total")[j];
                         xlen = x.childNodes.length;
                         y = x.firstChild;
+                        if (j = xmlDoc.getElementsByTagName("total").length - 1) {
+                            textValeurActuelle = X.childNodes[1].nodeValue;
+                        }
                         for (i = 0; i < xlen; i++) {
                             if (y.nodeType == 1) {
                                 textTableau += "<td> " + y.childNodes[0].nodeValue + "</td>";
+
                             }
                             y = y.nextSibling;
                         }
+
                     }
                     document.getElementById("tab-aujourdhui").innerHTML = textTableau;
+                    document.getElementById("valeur-actuelle").innerHTML = textValeurActuelle;
                 }
             };
             xhrJour.send(null);
@@ -35,20 +42,20 @@ var VueValeur = (function() {
 
 
 
-            var valeurActuelleLuminositeText = document.getElementById("valeur-actuelle-luminosite");
-            valeurActuelleLuminositeText.innerHTML = "<h1­>La luminosité est actuellement de " + valeurActuelle + "</h1>" + " lux.";
+            // var valeurActuelleLuminositeText = document.getElementById("valeur-actuelle-luminosite");
+            // valeurActuelleLuminositeText.innerHTML = "<h1­>La luminosité est actuellement de " + valeurActuelle + "</h1>" + " lux.";
 
-            var tableauAujourdHuiText = document.getElementById("tab-aujourdhui");
-            tableauAujourdHuiText.innerHTML = "";
-            tabAujourdHui.forEach(element => {
-                tableauAujourdHuiText.innerHTML += "<td>" + element + "</td>";
-            });
+            // var tableauAujourdHuiText = document.getElementById("tab-aujourdhui");
+            // tableauAujourdHuiText.innerHTML = "";
+            // tabAujourdHui.forEach(element => {
+            //     tableauAujourdHuiText.innerHTML += "<td>" + element + "</td>";
+            // });
 
-            var tableauDebutText = document.getElementById("tab-debut");
-            tableauDebutText.innerHTML = "";
-            tabDebut.forEach(element => {
-                tableauDebutText.innerHTML += "<td>" + element + "</td>";
-            });
+            // var tableauDebutText = document.getElementById("tab-debut");
+            // tableauDebutText.innerHTML = "";
+            // tabDebut.forEach(element => {
+            //     tableauDebutText.innerHTML += "<td>" + element + "</td>";
+            //});
         }
     }
 })();
