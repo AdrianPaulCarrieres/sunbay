@@ -21,23 +21,22 @@ var VueValeur = (function() {
                         x = xmlDoc.getElementsByTagName("total")[j];
                         xlen = x.childNodes.length;
                         y = x.firstChild;
-                        if (j = xmlDoc.getElementsByTagName("total").length - 1) {
-                            textValeurActuelle = X.childNodes[1].nodeValue;
-                        }
                         for (i = 0; i < xlen; i++) {
                             if (y.nodeType == 1) {
                                 textTableau += "<td> " + y.childNodes[0].nodeValue + "</td>";
-
                             }
                             y = y.nextSibling;
                         }
-
                     }
+                    x = xmlDoc.getElementsByTagName("moment")[xmlDoc.getElementsByTagName("moment").length - 1];
+                    document.getElementById("valeur-actuelle").innerHTML = x.childNodes[1].nodeValue;
                     document.getElementById("tab-aujourdhui").innerHTML = textTableau;
-                    document.getElementById("valeur-actuelle").innerHTML = textValeurActuelle;
+
                 }
             };
             xhrJour.send(null);
+
+
 
 
 
