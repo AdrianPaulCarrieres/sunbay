@@ -25,11 +25,11 @@ class BaseDeDonnees
             // pour récupérer le résultat des requêtes SELECT sous la forme d'un tableau associatif
             $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
             // pour afficher les erreurs
-//            $this->connectionb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         }
         catch(PDOException $exception) {
-//            echo $exception->getMessage();
+            echo $exception->getMessage();
         }
     }
 

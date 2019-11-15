@@ -51,7 +51,8 @@ class ResultatDAO implements ResultatSQL
                 $requeteliste = ResultatSQL::SQL_LISTER_LUMINOSITE_ANNEE_PAR_MOIS;
         }
 
-        $curseur = $this->connection->query($requetetotal);
+        $conn = BaseDeDonnees::getInstance()->getConnection();
+        $curseur = $conn->query($requetetotal); //ERREUR
         foreach ($curseur as $item) {
             $moyenne = $item[Moment::CLE_MOYENNE];
             $minimum = $item[Moment::CLE_MINIMUM];
@@ -62,8 +63,7 @@ class ResultatDAO implements ResultatSQL
         $listeMoment = array();
         $curseur = $this->connection->query($requeteliste);
         foreach ($curseur as $item) {
-//            $indexMoment = intval($item[Moment::CLE_INDEX_MOMENT]);
-            $indexMoment = 1;
+            $indexMoment = intval($item[Moment::CLE_INDEX_MOMENT]);
             $moyenne = $item[Moment::CLE_MOYENNE];
             $minimum = $item[Moment::CLE_MINIMUM];
             $maximum = $item[Moment::CLE_MAXIMUM];
