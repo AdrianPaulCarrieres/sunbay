@@ -9,7 +9,6 @@ $plage = 'jour' ou 'mois' ou 'annee'
 https://hote/index.php?typeDonnee=$typeDonnee&plage=$plage
 
 
-
 pretty url (pas encore mis en place):
 
 https://hote/$typeDonnee/$plage
