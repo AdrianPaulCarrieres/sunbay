@@ -40,6 +40,7 @@ interface ResultatSQL
         WHERE id_type_donnee_mesuree = 2
             AND date_trunc('day', instant) = date_trunc('day', now())
         GROUP BY index_moment
+        ORDER BY index_moment
     ";
 
     const SQL_LISTER_LUMINOSITE_MOIS_PAR_JOUR = " 
@@ -50,7 +51,8 @@ interface ResultatSQL
         FROM donnee_mesuree
         WHERE id_type_donnee_mesuree = 2
             AND date_trunc('month', instant) = date_trunc('month', now())
-        GROUP BY index_moment;
+        GROUP BY index_moment
+        ORDER BY index_moment
     ";
 
     const SQL_LISTER_LUMINOSITE_ANNEE_PAR_MOIS = "
@@ -62,5 +64,6 @@ interface ResultatSQL
         WHERE id_type_donnee_mesuree = 2
             AND date_trunc('year', instant) = date_trunc('year', now())
         GROUP BY index_moment
+        ORDER BY index_moment
     ";
 }

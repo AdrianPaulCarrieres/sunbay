@@ -74,15 +74,15 @@ final class Calculateur
         return $xml;
     }
 
-    static function etiqueterMoment($plage, $compteur)
+    private function etiqueterMoment($plage, $compteur)
     {
         switch ($plage) {
             case 'jour':
-                return self::LISTE_ETIQUETTE_JOUR[$compteur];
+                return self::LISTE_ETIQUETTE_JOUR[$compteur-1];
             case 'annee':
-                return self::LISTE_ETIQUETTE_ANNEE[$compteur];
+                return self::LISTE_ETIQUETTE_ANNEE[$compteur-1];
             default:
-                return $compteur+1;
+                return $compteur;
         }
     }
 }
