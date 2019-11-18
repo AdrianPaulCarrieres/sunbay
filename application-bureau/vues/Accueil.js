@@ -10,7 +10,7 @@ var Accueil = (function () {
             var tableauLum = new Array();
             var tableauMoments = new Array();
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://sunbay-php.vpsloic.loicbertrand.net/index.php?plage=mois", true);
+            xhr.open("GET", "https://sunbay-php.vpsloic.loicbertrand.net/index.php?plage=jour", true);
             xhr.overrideMimeType('text/xml');
 
             xhr.onload = function () {
@@ -26,7 +26,7 @@ var Accueil = (function () {
                         tableauMoments.push( valeursMoments[i].childNodes[0].nodeValue);
                     }
                     console.log(tableauMoments);
-                    var tabtest = tableauMoments;
+                    document.getElementById("lux").innerHTML = tableauLum[tableauLum.length-1];
                     var ctx = document.getElementById('chartLum').getContext('2d');
                     ctx.height = 200;
                     var chart = new Chart(ctx, {
