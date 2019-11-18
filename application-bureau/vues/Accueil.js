@@ -10,10 +10,10 @@ var Accueil = (function () {
             var tableauLum = new Array();
             var tableauMoments = new Array();
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=jour", false);//probleme a cause de cors, fonctionne que si requete envoye depuis localhost
+            xhr.open("GET", "https://sunbay-php.vpsloic.loicbertrand.net/index.php?plage=mois", true);
             xhr.overrideMimeType('text/xml');
 
-            xhr.onreadystatechange = function () {
+            xhr.onload = function () {
                 if (xhr.readyState === xhr.DONE && xhr.status === 200) {
                     console.log(xhr.response, xhr.responseXML);
                     valeurs = xhr.responseXML.getElementsByTagName("moyenne");
@@ -25,34 +25,36 @@ var Accueil = (function () {
                     for (i = 0; i< valeursMoments.length; i++) {
                         tableauMoments.push( valeursMoments[i].childNodes[0].nodeValue);
                     }
-                    console.log(tableauMoments)
+                    console.log(tableauMoments);
                     var tabtest = tableauMoments;
+                    var ctx = document.getElementById('chartLum').getContext('2d');
+                    ctx.height = 200;
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            labels: tableauMoments,
+                            datasets: [{
+                                label: 'Luminosité',
+                                backgroundColor: 'rgb(99, 255, 132)',
+                                borderColor: 'rgb(99, 255, 132)',
+                                data: tableauLum
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            maintainAspectRatio: false,
+                        }
+                    });
                 }
             };
+
             xhr.send(null);
 
-            var ctx = document.getElementById('chartLum').getContext('2d');
-            ctx.height = 200;
-            var chart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: 'line',
 
-                // The data for our dataset
-                data: {
-                    labels: tableauMoments,
-                    datasets: [{
-                        label: 'Luminosité',
-                        backgroundColor: 'rgb(99, 255, 132)',
-                        borderColor: 'rgb(99, 255, 132)',
-                        data: tableauLum
-                    }]
-                },
-
-                // Configuration options go here
-                options: {
-                    maintainAspectRatio: false,
-                }
-            });
 
 
 

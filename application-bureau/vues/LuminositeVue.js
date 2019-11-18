@@ -12,7 +12,7 @@ var LuminositeVue = (function () {
             var tableauLumAnnee = new Array();
             var tableauMomentsAnnee = new Array();
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=jour", false);
+            xhr.open("GET", "https://sunbay-php.vpsloic.loicbertrand.net/index.php?plage=jour", true);
             // If specified, responseType must be empty string or "document"
 
 // Force the response to be parsed as XML
@@ -31,46 +31,92 @@ var LuminositeVue = (function () {
                         tableauMoments.push( valeursMoments[i].childNodes[0].nodeValue);
                     }
                     console.log(tableauMoments);
+                    elementBody = document.getElementsByTagName("body")[0];
+                    elementBody.innerHTML = header + pageLuminosite;
+                    var ctx = document.getElementById('chartLumJour').getContext('2d');
+                    ctx.height = 500;
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            labels: tableauMoments,
+                            datasets: [{
+                                label: 'Luminosité',
+                                backgroundColor: 'rgb(99, 255, 132)',
+                                borderColor: 'rgb(99, 255, 132)',
+                                data: tableauLum
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            maintainAspectRatio: false,
+                        }
+                    });
                 }
             };
             xhr.send(null);
 
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=mois", false);
+            var xhr2 = new XMLHttpRequest();
+            xhr2.open("GET", "https://sunbay-php.vpsloic.loicbertrand.net/index.php?plage=mois", true);
             // If specified, responseType must be empty string or "document"
 
 // Force the response to be parsed as XML
-            xhr.overrideMimeType('text/xml');
+            xhr2.overrideMimeType('text/xml');
 
-            xhr.onload = function () {
-                if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                    console.log(xhr.response, xhr.responseXML);
-                    valeurs = xhr.responseXML.getElementsByTagName("moyenne");
-                    valeursMoments = xhr.responseXML.getElementsByTagName("numero");
-                    for (i = 1; i< valeurs.length; i++) {
-                        tableauLumMois.push( valeurs[i].childNodes[0].nodeValue)
+            xhr2.onload = function () {
+                if (xhr2.readyState === xhr2.DONE && xhr2.status === 200) {
+                    console.log(xhr2.response, xhr2.responseXML);
+                    valeursMois = xhr2.responseXML.getElementsByTagName("moyenne");
+                    valeursMomentsMois = xhr2.responseXML.getElementsByTagName("numero");
+                    for (i = 1; i< valeursMois.length; i++) {
+                        tableauLumMois.push( valeursMois[i].childNodes[0].nodeValue)
                     }
                     // delete tableauLum[0];
-                    for (i = 0; i< valeursMoments.length; i++) {
-                        tableauMomentsMois.push( valeursMoments[i].childNodes[0].nodeValue);
+                    for (i = 0; i< valeursMomentsMois.length; i++) {
+                        tableauMomentsMois.push( valeursMomentsMois[i].childNodes[0].nodeValue);
                     }
                     console.log(tableauMomentsMois);
+                    var ctx = document.getElementById('chartLumMois').getContext('2d');
+                    ctx.height = 500;
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            labels: tableauMomentsMois,
+                            datasets: [{
+                                label: 'Luminosité',
+                                backgroundColor: 'rgb(99, 255, 132)',
+                                borderColor: 'rgb(99, 255, 132)',
+                                data: tableauLumMois
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            maintainAspectRatio: false,
+                        }
+                    });
                 }
             };
-            xhr.send(null);
+            xhr2.send(null);
 
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://localhost/projet-capture-2019-sunbay/service-web-php/api/index.php?plage=annee", false);
+            var xhr3 = new XMLHttpRequest();
+            xhr3.open("GET", "https://sunbay-php.vpsloic.loicbertrand.net/index.php?plage=annee", true);
             // If specified, responseType must be empty string or "document"
 
 // Force the response to be parsed as XML
-            xhr.overrideMimeType('text/xml');
+            xhr3.overrideMimeType('text/xml');
 
-            xhr.onload = function () {
-                if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                    console.log(xhr.response, xhr.responseXML);
-                    valeurs = xhr.responseXML.getElementsByTagName("moyenne");
-                    valeursMoments = xhr.responseXML.getElementsByTagName("numero");
+            xhr3.onload = function () {
+                if (xhr3.readyState === xhr3.DONE && xhr3.status === 200) {
+                    console.log(xhr3.response, xhr3.responseXML);
+                    valeurs = xhr3.responseXML.getElementsByTagName("moyenne");
+                    valeursMoments = xhr3.responseXML.getElementsByTagName("numero");
                     for (i = 1; i< valeurs.length; i++) {
                         tableauLumAnnee.push( valeurs[i].childNodes[0].nodeValue)
                     }
@@ -79,81 +125,31 @@ var LuminositeVue = (function () {
                         tableauMomentsAnnee.push( valeursMoments[i].childNodes[0].nodeValue);
                     }
                     console.log(tableauMomentsAnnee);
+                    var ctx = document.getElementById('chartLumAnnee').getContext('2d');
+                    ctx.height = 200;
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            labels: tableauMomentsAnnee,
+                            datasets: [{
+                                label: 'Luminosité',
+                                backgroundColor: 'rgb(99, 255, 132)',
+                                borderColor: 'rgb(99, 255, 132)',
+                                data: tableauLumAnnee
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            maintainAspectRatio: false,
+                        }
+                    });
                 }
             };
-            xhr.send(null);
-
-            elementBody = document.getElementsByTagName("body")[0];
-            elementBody.innerHTML = header + pageLuminosite;
-            var ctx = document.getElementById('chartLumJour').getContext('2d');
-            ctx.height = 500;
-            var chart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: 'line',
-
-                // The data for our dataset
-                data: {
-                    labels: tableauMoments,
-                    datasets: [{
-                        label: 'Luminosité',
-                        backgroundColor: 'rgb(99, 255, 132)',
-                        borderColor: 'rgb(99, 255, 132)',
-                        data: tableauLum
-                    }]
-                },
-
-                // Configuration options go here
-                options: {
-                    maintainAspectRatio: false,
-                }
-            });
-
-            var ctx = document.getElementById('chartLumMois').getContext('2d');
-            ctx.height = 500;
-            var chart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: 'line',
-
-                // The data for our dataset
-                data: {
-                    labels: tableauMomentsMois,
-                    datasets: [{
-                        label: 'Luminosité',
-                        backgroundColor: 'rgb(99, 255, 132)',
-                        borderColor: 'rgb(99, 255, 132)',
-                        data: tableauLumMois
-                    }]
-                },
-
-                // Configuration options go here
-                options: {
-                    maintainAspectRatio: false,
-                }
-            });
-
-            var ctx = document.getElementById('chartLumAnnee').getContext('2d');
-            ctx.height = 200;
-            var chart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: 'line',
-
-                // The data for our dataset
-                data: {
-                    labels: tableauMomentsAnnee,
-                    datasets: [{
-                        label: 'Luminosité',
-                        backgroundColor: 'rgb(99, 255, 132)',
-                        borderColor: 'rgb(99, 255, 132)',
-                        data: tableauLumAnnee
-                    }]
-                },
-
-                // Configuration options go here
-                options: {
-                    maintainAspectRatio: false,
-                }
-            });
+            xhr3.send(null);
         }
-
     }
 })();
