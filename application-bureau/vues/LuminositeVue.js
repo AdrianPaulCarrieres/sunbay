@@ -3,7 +3,8 @@ var LuminositeVue = (function () {
     header = document.getElementById("script_header").innerHTML;
 
     return function () {
-
+        elementBody = document.getElementsByTagName("body")[0];
+        elementBody.innerHTML = header + pageLuminosite;
         this.afficher = function () {
             var tableauLum = new Array();
             var tableauMoments = new Array();
@@ -31,9 +32,7 @@ var LuminositeVue = (function () {
                         tableauMoments.push( valeursMoments[i].childNodes[0].nodeValue);
                     }
                     console.log(tableauMoments);
-                    console.log(document.getElementById("lux"));
-                    elementBody = document.getElementsByTagName("body")[0];
-                    elementBody.innerHTML = header + pageLuminosite;
+
                     document.getElementById("lux").innerHTML = tableauLum[tableauLum.length-1];
                     var ctx = document.getElementById('chartLumJour').getContext('2d');
                     ctx.height = 500;
