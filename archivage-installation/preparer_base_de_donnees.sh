@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SERVEUR=192.168.56.10
-PORT=2232
+PORT=5432
 BASE_DE_DONNEES=sunbay
 TABLE=donnee_mesuree
 TABLE_TEMP=donnee_temp
