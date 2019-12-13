@@ -1,13 +1,10 @@
 #!/bin/bash
 mkdir ~/.script/
 
-### TODO ###
-# Ajout du script qui crée la table d'archive dans la base de données.
+# Script qui crée la table d'archive dans la base de données.
+# Il déplace aussi les données plus vieilles que 3 mois dans une table d'archivage
+/bin/bash preparer_base_de_donnees.sh
 
-# instead of moving the larger older volume of data, move the smaller newer 
-# volume of data to a new table. and just point to this new table, or rename 
-# the tables to do the switch in place.
-#
 
 cp archiver_donnees.sh ~/.script/
 # A 00:00 le premier de chaque mois exécuter le script d'archivage. 

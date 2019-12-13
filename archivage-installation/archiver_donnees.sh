@@ -1,9 +1,10 @@
 #!/bin/bash
 
 SERVEUR=192.168.56.10
-PORT=2232
+PORT=5432
 BASE_DE_DONNEES=sunbay
 TABLE=donnee_mesuree
+TABLE_ARCHIVE=donnee_archive
 CHAMPS_DATE=instant
 DATE_LIMITE=`date --date="$(date +%Y-%m-15) -3 month" +'%Y-%m-01 00:00:00'`
 
@@ -14,6 +15,10 @@ DATE_LIMITE=`date --date="$(date +%Y-%m-15) -3 month" +'%Y-%m-01 00:00:00'`
 # From GNU date info page https://www.gnu.org/software/coreutils/manual/html_node/Relative-items-in-date-strings.html
 
 psql --host ${SERVEUR} --port ${PORT} --dbname ${BASE_DE_DONNEES} <<FIN
-  SELECT COUNT(*) FROM ${TABLE}
-  WHERE ${CHAMPS_DATE} <= '${DATE_LIMITE}'::DATE
+  WITH delta AS (
+        DELETE FROM ${TABLE} WHERE ${CHAMPS_DATE} <= '${DATE_LIMITE}'::DATE
+        RETURNING *
+    )
+    INSERT INTO ${TABLE_ARCHIVE} 
+    SELECT * FROM delta
 FIN

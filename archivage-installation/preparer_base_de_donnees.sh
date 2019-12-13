@@ -20,8 +20,8 @@ psql --host ${SERVEUR} --port ${PORT} --dbname ${BASE_DE_DONNEES} <<FIN
         id_donnee_mesuree INTEGER PRIMARY KEY,
         valeur NUMERIC(5),
         instant TIMESTAMP WITHOUT TIME ZONE,
-        id_type_donnee_mesuree INTEGER,
-    );
+        id_type_donnee_mesuree INTEGER
+    )
 FIN
 
 psql --host ${SERVEUR} --port ${PORT} --dbname ${BASE_DE_DONNEES} <<FIN1
@@ -30,7 +30,7 @@ psql --host ${SERVEUR} --port ${PORT} --dbname ${BASE_DE_DONNEES} <<FIN1
         RETURNING *
     )
     INSERT INTO ${TABLE_TEMP} 
-    SELECT * FROM delta;
+    SELECT * FROM delta
 FIN1
 
 psql --host ${SERVEUR} --port ${PORT} --dbname ${BASE_DE_DONNEES} <<FIN2
@@ -38,5 +38,5 @@ psql --host ${SERVEUR} --port ${PORT} --dbname ${BASE_DE_DONNEES} <<FIN2
     RENAME TO ${TABLE_ARCHIVE};
 
     ALTER TABLE ${TABLE_TEMP}
-    RENAME TO ${TABLE};
+    RENAME TO ${TABLE}
 FIN2
