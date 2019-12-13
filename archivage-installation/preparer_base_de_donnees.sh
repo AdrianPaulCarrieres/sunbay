@@ -22,17 +22,21 @@ psql --host ${SERVEUR} --port ${PORT} --dbname ${BASE_DE_DONNEES} <<FIN
         instant TIMESTAMP WITHOUT TIME ZONE,
         id_type_donnee_mesuree INTEGER,
     );
+FIN
 
+psql --host ${SERVEUR} --port ${PORT} --dbname ${BASE_DE_DONNEES} <<FIN1
     WITH delta AS (
         DELETE FROM ${TABLE} WHERE ${CHAMPS_DATE} >= '${DATE_LIMITE}'::DATE
         RETURNING *
     )
     INSERT INTO ${TABLE_TEMP} 
     SELECT * FROM delta;
+FIN1
 
+psql --host ${SERVEUR} --port ${PORT} --dbname ${BASE_DE_DONNEES} <<FIN2
     ALTER TABLE ${TABLE}
     RENAME TO ${TABLE_ARCHIVE};
 
     ALTER TABLE ${TABLE_TEMP}
     RENAME TO ${TABLE};
-FIN
+FIN2
