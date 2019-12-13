@@ -23,13 +23,19 @@ interface ResultatSQL
     ";
 
     const SQL_TROUVER_TOTAL_ANNEE = "
-        SELECT round(avg(valeur),1) as moyenne,
+        (SELECT round(avg(valeur),1) as moyenne,
             round(min(valeur),1) as minimum,
             round(max(valeur),1) as maximum
-        FROM donnee_mesuree
-        INNER JOIN donnee_archive ON date_trunc('year', donnee_archive.instant) = date_trunc('year', now())
-        WHERE id_type_donnee_mesuree = 2
-            AND date_trunc('year', instant) = date_trunc('year', now())
+            FROM donnee_mesuree
+            WHERE id_type_donnee_mesuree = 2
+                AND date_trunc('year', instant) = date_trunc('year', now()))
+        UNION ALL
+        (SELECT round(avg(valeur),1) as moyenne,
+            round(min(valeur),1) as minimum,
+            round(max(valeur),1) as maximum
+            FROM donnee_archive
+            WHERE id_type_donnee_mesuree = 2
+                AND date_trunc('year', instant) = date_trunc('year', now()))
 
     ";
 
@@ -56,14 +62,22 @@ interface ResultatSQL
     ";
 
     const SQL_LISTER_LUMINOSITE_ANNEE_PAR_MOIS = "
-        SELECT extract(month FROM date_trunc('month', instant)) as index_moment,
-            round(avg(valeur),1) as moyenne,
-            round(min(valeur),1) as minimum,
-            round(max(valeur),1) as maximum
+    (SELECT extract(month FROM date_trunc('month', instant)) as index_moment,
+        round(avg(valeur),1) as moyenne,
+        round(min(valeur),1) as minimum,
+        round(max(valeur),1) as maximum
         FROM donnee_mesuree
-        INNER JOIN donnee_archive ON date_trunc('year', donnee_archive.instant) = date_trunc('year', now())
         WHERE id_type_donnee_mesuree = 2
             AND date_trunc('year', instant) = date_trunc('year', now())
-        GROUP BY index_moment
+        GROUP BY index_moment)
+    UNION ALL
+    (SELECT extract(month FROM date_trunc('month', instant)) as index_moment,
+        round(avg(valeur),1) as moyenne,
+        round(min(valeur),1) as minimum,
+        round(max(valeur),1) as maximum
+        FROM donnee_archive
+        WHERE id_type_donnee_mesuree = 2
+            AND date_trunc('year', instant) = date_trunc('year', now())
+        GROUP BY index_moment)
     ";
 }
