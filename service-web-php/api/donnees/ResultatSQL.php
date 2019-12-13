@@ -61,6 +61,7 @@ interface ResultatSQL
             round(min(valeur),1) as minimum,
             round(max(valeur),1) as maximum
         FROM donnee_mesuree
+        INNER JOIN donnee_archive ON date_trunc('year', donnee_archive.instant) = date_trunc('year', now())
         WHERE id_type_donnee_mesuree = 2
             AND date_trunc('year', instant) = date_trunc('year', now())
         GROUP BY index_moment
