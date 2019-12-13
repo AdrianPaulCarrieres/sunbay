@@ -1,7 +1,5 @@
 #!/bin/bash
 
-SERVEUR=192.168.56.10
-PORT=2232
 BASE_DE_DONNEES=sunbay
 TABLE=donnee_mesuree
 TABLE_TEMP=donnee_temp
@@ -15,12 +13,12 @@ DATE_LIMITE=`date --date="$(date +%Y-%m-15) -3 month" +'%Y-%m-01 00:00:00'`
 # Renommer ${TABLE_TEMP} en ${TABLE}
 
 
-psql --host ${SERVEUR} --port ${PORT} --dbname ${BASE_DE_DONNEES} <<FIN
-    CREATE TABLE ${TABLE_TEMP}(
+psql --dbname ${BASE_DE_DONNEES} <<FIN
+    CREATE TABLE ${TABLE_TEMP} (
         id_donnee_mesuree INTEGER PRIMARY KEY,
         valeur NUMERIC(5),
         instant TIMESTAMP WITHOUT TIME ZONE,
-        id_type_donnee_mesuree INTEGER,
+        id_type_donnee_mesuree INTEGER
     );
 
     WITH delta AS (
