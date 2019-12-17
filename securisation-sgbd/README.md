@@ -9,5 +9,5 @@ Cette branche contient les scripts et fichiers de configuration nécessaires à 
 
 1. Cloner le répertoire
 ```
-git clone --single-branch --branch securisation-sgbd-master https://github.c om/cegepmatane/projet-capture-2019-sunbay .
+git clone --single-branch --branch securisation-sgbd-master https://github.com/cegepmatane/projet-capture-2019-sunbay .
 ```
