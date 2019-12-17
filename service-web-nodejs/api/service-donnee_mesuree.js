@@ -1,4 +1,4 @@
-var donneeDAO = require('./DonneeDAO');
+var luminositeDAO = require('./LuminositeDAO');
 var donnee = require('../modele/Donnee');
 // var qs = require('querystring');
 //activiteDAO.tester();
@@ -35,7 +35,7 @@ var repondeur = async function(requete,reponse) {
 
             console.log(instant+luminosite);
     
-            donneeDAO.enregistrerDonnee(new donnee.Donnee(instant, luminosite));
+            luminositeDAO.enregistrerDonnee(new donnee.Donnee(instant, luminosite));
             
             reponse.statusCode = 200;
             reponse.setHeader('Content-type', 'text/plain');
