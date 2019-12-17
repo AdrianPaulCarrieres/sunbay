@@ -1,2 +1,3 @@
 #!/bin/bash
-pg_restore -d newdb db.dump
+/bin/bash ~/script/creerbd.sh
+pg_restore -d sunbay --create ~/backup/sunbay_dump.sql
