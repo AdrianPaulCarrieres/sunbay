@@ -45,3 +45,7 @@ CREATE TABLE calcul(
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+
+CREATE INDEX index_timestamp
+ON donnee_mesuree(instant);
