@@ -8,4 +8,5 @@ if ( !isset($plage) ) exit();
 
 if ( !($plage == 'jour' || $plage == 'mois' || $plage == 'annee') ) exit();
 
-echo Calculateur::recupererDonnees($plage);
+// echo Calculateur::recupererDonnees($plage);
+echo LecteurFichier::recupererDonnees($plage);
