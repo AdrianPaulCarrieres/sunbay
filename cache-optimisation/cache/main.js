@@ -1,6 +1,7 @@
 const donneesLuminositeDAO = require('./donnee/DonneesLuminositeDAO');
 const dateModele = require('./modele/DateModele');
 const fonctionDateModele = require('./fonction/fonctionDateModele');
+const gestionfichiersXMl = require('./donnee/GestionFichiersXML');
 
 const dateDebutProcessus = new Date();
 
@@ -31,15 +32,16 @@ const dateDebutProcessus = new Date();
         var totalAnnee = await donneesLuminositeDAO.trouverTotalAnnee(fonctionDateModele.toString(dateTest));
         console.log(totalAnnee);
 
-        //TODO:Insérer dans la table jour
+        //Insérer dans la table jour
         await donneesLuminositeDAO.insererTableJour(donneesHeure);
 
-        //TODO:Faire une update de la table total
+        //Faire une update de la table total
         await donneesLuminositeDAO.mettreAJourTotal('jour', totalJour);
         await donneesLuminositeDAO.mettreAJourTotal('mois', totalMois);
         await donneesLuminositeDAO.mettreAJourTotal('annee', totalAnnee);
 
-
+        //TODO:Mettre a jour les fichier xml
+        await gestionfichiersXMl.mettreAJourFichiers();
 
     }
 

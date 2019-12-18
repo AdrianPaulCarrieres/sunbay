@@ -143,5 +143,23 @@ exports.mettreAJourTotal = async function(etiquettePlage, total) {
 
     console.log('>>> données modifiées');
 
+}
+
+exports.selectionnerDonneesTable = async function(nomTable) {
+
+    const QUERY = {
+        name: 'selectionnerDonneesTable',
+        text: 'SELECT * FROM ' + nomTable
+    }
+
+    var bdd = await baseDeDonnees.connexion();
+
+    var resultat = await bdd.query(QUERY);
+
+    await baseDeDonnees.deconnexion(bdd);
+
+    // console.log(resultat.rows);
+
+    return resultat.rows;
 
 }
