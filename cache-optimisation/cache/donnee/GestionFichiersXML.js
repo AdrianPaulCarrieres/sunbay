@@ -90,8 +90,6 @@ exports.mettreAJourFichiers = async function() {
         console.error(err)
     }
 
-    console.log('>>> Fichiers xml mis à jour');    
-
 }
 
 
