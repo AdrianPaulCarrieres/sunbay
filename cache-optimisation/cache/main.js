@@ -31,12 +31,13 @@ const dateDebutProcessus = new Date();
         var totalAnnee = await donneesLuminositeDAO.trouverTotalAnnee(fonctionDateModele.toString(dateTest));
         console.log(totalAnnee);
 
-
         //TODO:Insérer dans la table jour
-
+        await donneesLuminositeDAO.insererTableJour(donneesHeure);
 
         //TODO:Faire une update de la table total
-
+        await donneesLuminositeDAO.mettreAJourTotal('jour', totalJour);
+        await donneesLuminositeDAO.mettreAJourTotal('mois', totalMois);
+        await donneesLuminositeDAO.mettreAJourTotal('annee', totalAnnee);
 
 
 
