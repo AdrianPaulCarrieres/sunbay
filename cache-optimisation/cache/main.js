@@ -2,8 +2,6 @@ const donneesLuminositeDAO = require('./donnee/DonneesLuminositeDAO');
 const dateModele = require('./modele/DateModele');
 const fonctionDateModele = require('./fonction/fonctionDateModele');
 
-const entreeJourDenormalisation = require('./modele/JourDenormalisation');
-
 const dateDebutProcessus = new Date();
 
 (async function() {
@@ -22,8 +20,17 @@ const dateDebutProcessus = new Date();
         console.log(donneesHeure);
 
         //Récupère le total de la journée
-        var totalHeure = await donneesLuminositeDAO.trouverTotalJour(fonctionDateModele.toString(dateTest));
-        console.log(totalHeure);
+        var totalJour = await donneesLuminositeDAO.trouverTotalJour(fonctionDateModele.toString(dateTest));
+        console.log(totalJour);
+
+        //Récupère le total du mois
+        var totalMois = await donneesLuminositeDAO.trouverTotalMois(fonctionDateModele.toString(dateTest));
+        console.log(totalMois);
+
+        //Récupère le total de l'année
+        var totalAnnee = await donneesLuminositeDAO.trouverTotalAnnee(fonctionDateModele.toString(dateTest));
+        console.log(totalAnnee);
+
 
         //TODO:Insérer dans la table jour
 

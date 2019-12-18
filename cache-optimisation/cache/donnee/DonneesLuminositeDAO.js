@@ -2,7 +2,7 @@ const baseDeDonnees = require('./BaseDeDonnee');
 
 exports.selectionnerDonneesJourneeParHeure = async function(date) {
 
-    const SELECT_TABLE_PARAMETRE = {
+    const QUERY = {
         name: 'selectionnerDonneesJourneeParHeure',
         text: 'SELECT extract(hour FROM date_trunc(\'hour\', instant)) as index_moment,'
             + 'round(avg(valeur), 1) as moyenne,'
@@ -16,7 +16,7 @@ exports.selectionnerDonneesJourneeParHeure = async function(date) {
 
     var bdd = await baseDeDonnees.connexion();
 
-    var resultat = await bdd.query(SELECT_TABLE_PARAMETRE);
+    var resultat = await bdd.query(QUERY);
 
     await baseDeDonnees.deconnexion(bdd);
 
@@ -28,8 +28,8 @@ exports.selectionnerDonneesJourneeParHeure = async function(date) {
 
 exports.trouverTotalJour = async function(date) {
 
-    const SELECT_TABLE_PARAMETRE = {
-        name: 'selectionnerDonneesJourneeParHeure',
+    const QUERY = {
+        name: 'trouverTotalJour',
         text: 'SELECT round(avg(valeur),1) as moyenne,'
                     + 'round(min(valeur), 1) as minimum,'
                     + 'round(max(valeur), 1) as maximum '
@@ -40,7 +40,7 @@ exports.trouverTotalJour = async function(date) {
 
     var bdd = await baseDeDonnees.connexion();
 
-    var resultat = await bdd.query(SELECT_TABLE_PARAMETRE);
+    var resultat = await bdd.query(QUERY);
 
     await baseDeDonnees.deconnexion(bdd);
 
@@ -49,3 +49,75 @@ exports.trouverTotalJour = async function(date) {
     return resultat.rows[0];
 
 }
+
+exports.trouverTotalMois = async function (date) {
+
+    const QUERY = {
+        name: 'trouverTotalJour',
+        text: 'SELECT round(avg(valeur),1) as moyenne,'
+            + 'round(min(valeur), 1) as minimum,'
+            + 'round(max(valeur), 1) as maximum '
+            + 'FROM donnee_mesuree '
+            + 'WHERE id_type_donnee_mesuree = 2 '
+            + 'AND date_trunc(\'month\', instant) = date_trunc(\'month\', TIMESTAMP \'' + date + '\');'
+    }
+
+    var bdd = await baseDeDonnees.connexion();
+
+    var resultat = await bdd.query(QUERY);
+
+    await baseDeDonnees.deconnexion(bdd);
+
+    // console.log(resultat.rows);
+
+    return resultat.rows[0];
+
+}
+
+exports.trouverTotalAnnee = async function (date) {
+
+    const QUERY = {
+        name: 'trouverTotalJour',
+        text: 'SELECT round(avg(valeur),1) as moyenne,'
+            + 'round(min(valeur), 1) as minimum,'
+            + 'round(max(valeur), 1) as maximum '
+            + 'FROM donnee_mesuree '
+            + 'WHERE id_type_donnee_mesuree = 2 '
+            + 'AND date_trunc(\'year\', instant) = date_trunc(\'year\', TIMESTAMP \'' + date + '\');'
+    }
+
+    var bdd = await baseDeDonnees.connexion();
+
+    var resultat = await bdd.query(QUERY);
+
+    await baseDeDonnees.deconnexion(bdd);
+
+    // console.log(resultat.rows);
+
+    return resultat.rows[0];
+
+}
+
+exports.insererTableJour = async function (donneesHeure) {
+
+    var donnees = [];
+    donnees.push(donneesHeure.numero);
+    donnees.push(donneesHeure.moyenne);
+    donnees.push(donneesHeure.minimum);
+    donnees.push(donneesHeure.maximum);
+
+    const QUERY = {
+        name: 'insererTableJour',
+        text: 'INSERT INTO jour(numero, moyenne, min, max) VALUES ($1,$2,$3,$4)',
+        values: donnees
+    }
+
+    var bdd = await baseDeDonnees.connexion();
+
+    var resultat = await bdd.query(QUERY);
+
+    await baseDeDonnees.deconnexion(bdd);
+
+}
+
+// exports.mettreAJourTotal = async function(etiquettePlage, )
