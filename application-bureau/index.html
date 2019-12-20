@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
@@ -12,92 +13,103 @@
     <!-- Compiled and minified JavaScript -->
 
     <script src="materialize/js/materialize.js"></script>
-    <link  href="css/accueil.css" rel="stylesheet">
+    <link href="css/accueil.css" rel="stylesheet">
 </head>
+
 <body>
 
 </body>
 <script type="text/plain" id="page_accueil">
-<div id="position_header">
+    <div id="position_header">
 
-</div>
+    </div>
 
-<div class="container">
-    <div class="row" id="ligne1">
-        <div class="card  grey darken-3 col s12">
-            <div class="card-content ">
-                <span class="card-title white-text center-align">Dernière Luminosité</span>
-                <p id="lux" class="center-align">28 Lux</p>
+    <div class="container">
+        <div class="row" id="ligne1">
+            <div class="card  grey darken-3 col s12">
+                <div class="card-content ">
+                    <span class="card-title white-text center-align">Dernière Luminosité</span>
+                    <p id="lux" class="center-align">28 Lux</p>
+                </div>
             </div>
-        </div>
-        <div class="card right   grey darken-3 col s12">
-            <div class="card-content ">
-                <canvas class="chartAccueil"   id="chartLum"></canvas>
+            <div class="card right   grey darken-3 col s12">
+                <div class="card-content ">
+                    <canvas class="chartAccueil" id="chartLum"></canvas>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Dropdown Structure -->
+    <!-- Dropdown Structure -->
 
 </script>
 
-<script type="text/plain" id= "script_header" >
+<script type="text/plain" id="script_header">
     <nav>
-    <div class=" blue row" id="header">
-        <a href="#" class=" col l6 center-align logo" style="color: #424242 ">Sunbay</a>
-        <a class='col l6 center-align' href='#luminosite'>Luminosité</a>
-    </div>
-</nav>
+        <div class=" blue row" id="header">
+            <a href="#" class=" col l6 center-align logo" style="color: #424242 ">Sunbay</a>
+            <a class='col l6 center-align' href='#luminosite'>Luminosité</a>
+        </div>
+    </nav>
 </script>
 
 <script type="text/plain" id="page_luminosite">
-<div class="container">
-    <div class="row" id="ligne1">
-        <div class="card grey darken-3 col l5 m5 s12">
-            <div class="card-content ">
-                <span class="card-title white-text center-align">Luminosité actuelle</span>
-                <p id="lux" class="center-align">28 Lux</p>
+    <div class="container">
+        <div class="row" id="ligne1">
+            <div class="card grey darken-3 col l5 m5 s12">
+                <div class="card-content ">
+                    <span class="card-title white-text center-align">Luminosité actuelle</span>
+                    <p id="lux" class="center-align">28 Lux</p>
+                </div>
+            </div>
+            <div class="card right   grey darken-3 col l5 m5 s12">
+                <div class="card-content ">
+                    <span class="card-title white-text center-align"><a class = "white-text" href = "#tableauJour" >Moyenne ajourd'hui</a></span>
+                    <canvas class="chartLum" id="chartLumJour"></canvas>
+                </div>
             </div>
         </div>
-        <div class="card right   grey darken-3 col l5 m5 s12">
-            <div class="card-content ">
-            <span class="card-title white-text center-align"><a class = "white-text" href = "#tableauJour" >Moyenne ajourd'hui</a></span>
-                <canvas class="chartLum"   id="chartLumJour"></canvas>
+        <div class="row" id="ligne2">
+            <div class="card    grey darken-3 col l5 m5 s12">
+                <div class="card-content ">
+                    <span class="card-title white-text center-align"><a class = "white-text" href = "#tableauMois" >Moyenne ce mois</a></span>
+                    <canvas class="chartLum" id="chartLumMois"></canvas>
+                </div>
+            </div>
+            <div class="card right   grey darken-3 col l5 m5 s12">
+                <div class="card-content ">
+                    <span class="card-title white-text center-align"><a class = "white-text" href = "#tableauAnnee" >Moyenne cette année</a></span>
+                    <canvas class="chartLum" id="chartLumAnnee"></canvas>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row" id="ligne2">
-        <div class="card    grey darken-3 col l5 m5 s12">
-            <div class="card-content ">
-            <span class="card-title white-text center-align"><a class = "white-text" href = "#tableauMois" >Moyenne ce mois</a></span>
-                <canvas  class="chartLum"  id="chartLumMois"></canvas>
-            </div>
-        </div>
-        <div class="card right   grey darken-3 col l5 m5 s12">
-            <div class="card-content ">
-            <span class="card-title white-text center-align"><a class = "white-text" href = "#tableauAnnee" >Moyenne cette année</a></span>
-                <canvas class="chartLum" id="chartLumAnnee"></canvas>
-            </div>
-        </div>
-    </div>
-</div>
 </script>
 
 <script type="text/plain" id="tableau">
-<div class="container">
-<table>
-    <thead id="entete"><td>Heure</td><td>Luminosité moyenne</td><td>Luminosité min</td><td>Luminosité max</td></thead>
-    <tbody id="corps_tableau">
-    <tr><td>Heure</td><td>Luminosité moyenne</td><td>Luminosité min</td><td>Luminosité max</td></tr>
-    </tbody>
-</table>
-</div>
+    <div class="container">
+        <table>
+            <thead id="entete">
+                <td>Heure</td>
+                <td>Luminosité moyenne</td>
+                <td>Luminosité min</td>
+                <td>Luminosité max</td>
+            </thead>
+            <tbody id="corps_tableau">
+                <tr>
+                    <td>Heure</td>
+                    <td>Luminosité moyenne</td>
+                    <td>Luminosité min</td>
+                    <td>Luminosité max</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </script>
 
 <script src="vues/Accueil.js"></script>
 <script src="vues/LuminositeVue.js"></script>
-<script src="vues/TableauVue.js" ></script>
+<script src="vues/TableauVue.js"></script>
 <script src="controleurs/application.js"></script>
 
 </html>
